@@ -4,7 +4,7 @@
 #distribution of data: undefined
 #percentage of backdoored nodes: 0.3333333333333333
 #percentage of poisoned data in backdoored nodes: 100
-#way backdoor looks like: glasses
+#way backdoor looks like: green square
 #order of time: backdoors first
 #attack model: basic
 training_type;epoch_number;learn_rate;avg_training_loss;avg_test_loss;test_accuracy
