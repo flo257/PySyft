@@ -24,9 +24,15 @@ copyright = "2019, OpenMinedContributors"
 author = "Andrew Trask"
 
 # The short X.Y version
+<<<<<<< HEAD
 version = "0.1.22a1"
 # The full version, including alpha/beta/rc tags
 release = "0.1.22a1"
+=======
+version = "0.1.28a1"
+# The full version, including alpha/beta/rc tags
+release = "0.1.28a1"
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
 
 # -- General configuration ---------------------------------------------------

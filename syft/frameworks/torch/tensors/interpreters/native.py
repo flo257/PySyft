@@ -4,10 +4,27 @@ import math
 
 from typing import List
 from typing import Union
+import warnings
 import weakref
 
+<<<<<<< HEAD
+=======
+import numpy as np
+import torch
+
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 import syft
+from syft.generic.frameworks.hook import hook_args
+from syft.generic.frameworks.overload import overloaded
+from syft.frameworks.torch.tensors.interpreters.crt_precision import _moduli_for_fields
+from syft.generic.frameworks.types import FrameworkTensor
+from syft.generic.tensor import AbstractTensor
+from syft.generic.pointers.pointer_tensor import PointerTensor
+from syft.workers.base import BaseWorker
+
+from syft.exceptions import PureFrameworkTensorFoundError
 from syft.exceptions import InvalidTensorForRemoteGet
+<<<<<<< HEAD
 from syft.frameworks.torch.tensors.interpreters import AbstractTensor
 from syft.frameworks.torch.pointers import PointerTensor
 from syft.workers import BaseWorker
@@ -16,6 +33,8 @@ from syft.frameworks.torch.tensors.interpreters.crt_precision import _moduli_for
 from syft.exceptions import PureTorchTensorFoundError
 
 from syft.frameworks.torch.overload_torch import overloaded
+=======
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
 
 def _get_maximum_precision():
@@ -53,22 +72,6 @@ class TorchTensor(AbstractTensor):
 
     def has_child(self):
         return hasattr(self, "child")
-
-    def describe(self, description):
-        self.description = description
-        return self
-
-    def tag(self, *_tags):
-        if self.tags is None:
-            tags = list()
-        else:
-            tags = list(self.tags)
-
-        for new_tag in _tags:
-            tags.append(new_tag)
-
-        self.tags = set(tags)
-        return self
 
     @property
     def tags(self):
@@ -210,6 +213,35 @@ class TorchTensor(AbstractTensor):
                 self._id = syft.ID_PROVIDER.pop()
                 return self._id
 
+    @property
+    def gc(self):
+        return self.garbage_collection
+
+    @gc.setter
+    def gc(self, flag):
+        self.garbage_collection = flag
+
+    @property
+    def disable_gc(self):
+        self.child.garbage_collect_data = False
+        self.garbage_collection = False
+        return self
+
+    @property
+    def garbage_collection(self):
+        if not self.has_child():
+            if hasattr(self, "ptr") and self.ptr is not None:
+                self.child = self.ptr
+                self.child.garbage_collect_data = True
+        return self.child.garbage_collect_data
+
+    @garbage_collection.setter
+    def garbage_collection(self, flag):
+        if not self.has_child():
+            if hasattr(self, "ptr") and self.ptr is not None:
+                self.child = self.ptr
+        self.child.garbage_collect_data = flag
+
     @id.setter
     def id(self, new_id):
         if self.is_wrapper:
@@ -268,12 +300,16 @@ class TorchTensor(AbstractTensor):
 
             # Replace all torch tensor with their child attribute
             # Note that we return also args_type which helps handling case 3 in the docstring
+<<<<<<< HEAD
             new_args, new_kwargs, new_type, args_type = syft.frameworks.torch.hook_args.unwrap_args_from_function(
+=======
+            new_args, new_kwargs, new_type, args_type = hook_args.unwrap_args_from_function(
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
                 cmd, args, kwargs, return_args_type=True
             )
             # This handles case 3: it redirects the command to the appropriate class depending
             # of the syft type of the arguments and returns
-            if args_type not in (torch.Tensor, torch.nn.Parameter):
+            if args_type not in FrameworkTensor:
                 return args_type.handle_func_command(command)
 
             # build the new command
@@ -281,10 +317,15 @@ class TorchTensor(AbstractTensor):
             # Send it to the appropriate class and get the response
             response = new_type.handle_func_command(new_command)
             # Put back the wrappers where needed
+<<<<<<< HEAD
             response = syft.frameworks.torch.hook_args.hook_response(
                 cmd, response, wrap_type=args_type
             )
         except PureTorchTensorFoundError:  # means that it's not a wrapper but a pure tensor
+=======
+            response = hook_args.hook_response(cmd, response, wrap_type=args_type)
+        except PureFrameworkTensorFoundError:  # means that it's not a wrapper but a pure tensor
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
             # Check that the function has not been overwritten
             try:
@@ -382,6 +423,7 @@ class TorchTensor(AbstractTensor):
 
             if self._is_parameter():
                 if inplace:
+                    self.is_wrapper = True
                     with torch.no_grad():
                         self.set_()
                     self.data = ptr
@@ -391,12 +433,14 @@ class TorchTensor(AbstractTensor):
                         raise ValueError("Parameters can't accept no_wrap=True")
                     wrapper = torch.Tensor()
                     param_wrapper = torch.nn.Parameter(wrapper)
+                    param_wrapper.is_wrapper = True
                     with torch.no_grad():
                         param_wrapper.set_()
                     param_wrapper.data = ptr
                     output = param_wrapper
             else:
                 if inplace:
+                    self.is_wrapper = True
                     self.set_()
                     self.child = ptr
                     return self
@@ -421,25 +465,31 @@ class TorchTensor(AbstractTensor):
                 # want it to keep. #HackAlert
                 output.backup_grad = grad
 
-                if local_autograd:
-                    output = syft.AutogradTensor(
-                        data=output, preinitialize_grad=preinitialize_grad
-                    ).on(output)
+            if local_autograd:
+                output = syft.AutogradTensor(data=output, preinitialize_grad=preinitialize_grad).on(
+                    output
+                )
 
         else:
 
             children = list()
             for loc in location:
                 children.append(self.clone().send(loc, no_wrap=True))
+<<<<<<< HEAD
 
             output = syft.MultiPointerTensor(children=children)
 
+=======
+
+            output = syft.MultiPointerTensor(children=children)
+
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
             if not no_wrap:
                 output = output.wrap()
 
         return output
 
-    def send_(self, *location):
+    def send_(self, *location, **kwargs):
         """
         Calls send() with inplace option, but only with a single location
         :param location: workers locations
@@ -448,7 +498,7 @@ class TorchTensor(AbstractTensor):
         if len(location) > 1:
             raise NotImplementedError("Inplace send to several workers is currently not supported.")
 
-        return self.send(*location, inplace=True)
+        return self.send(*location, inplace=True, **kwargs)
 
     def create_pointer(
         self,
@@ -541,12 +591,13 @@ class TorchTensor(AbstractTensor):
 
         # Parameters use .data instead of children
         # so we need to have special support to make sure
-        # that Parmaeters operate inline (because they're
+        # that Parmeters operate inline (because they're
         # typically being managed inside of a model/optimizer
         # so not using the same wrapper can cause the model/
         # optimizer to lose track of where the actual weights
         # are.
         if isinstance(self, torch.nn.Parameter):
+            self.is_wrapper = tensor.data.is_wrapper
             if inplace:
                 self.data = tensor.data
                 self.grad = tensor.grad
@@ -558,6 +609,8 @@ class TorchTensor(AbstractTensor):
             self.set_(tensor)
             if hasattr(tensor, "child"):
                 self.child = tensor.child
+            else:
+                self.is_wrapper = False
             return self
         else:
             return tensor
@@ -576,6 +629,12 @@ class TorchTensor(AbstractTensor):
 
     def move(self, location):
         self.child = self.child.move(location)
+<<<<<<< HEAD
+=======
+        # We get the owner from self.child because the owner of a wrapper is
+        # not reliable and sometimes end up being the syft.local_worker
+        self.child.owner.register_obj(self)
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
         return self
 
     def attr(self, attr_name):
@@ -592,9 +651,14 @@ class TorchTensor(AbstractTensor):
         return attr_val
 
     def enc_fix_prec(self):
-        return self.child.fix_precision()
+        self.child.fix_precision()
+        return self
 
     def float_prec(self):
+        if isinstance(self.child, PointerTensor):
+            self.child = self.child.float_precision()
+            return self
+
         return self.child.float_precision()
 
     float_precision = float_prec
@@ -613,6 +677,13 @@ class TorchTensor(AbstractTensor):
     float_precision_ = float_prec_
 
     def fix_prec(self, *args, storage="auto", field_type="int100", **kwargs):
+<<<<<<< HEAD
+=======
+
+        if not kwargs.get("owner"):
+            kwargs["owner"] = self.owner
+
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
         if self.is_wrapper:
             self.child = self.child.fix_prec(*args, **kwargs)
             return self
@@ -653,7 +724,16 @@ class TorchTensor(AbstractTensor):
             )
         else:
             assert not need_large_prec, "This tensor needs large precision to be correctly stored"
+<<<<<<< HEAD
             return syft.FixedPrecisionTensor(*args, **kwargs).on(self).enc_fix_prec().wrap()
+=======
+            if "internal_type" in kwargs:
+                warnings.warn(
+                    "do not provide internal_type if data does not need LargePrecisionTensor to be stored"
+                )
+                del kwargs["internal_type"]
+            return syft.FixedPrecisionTensor(*args, **kwargs).on(self).enc_fix_prec()
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     fix_precision = fix_prec
 
@@ -691,23 +771,39 @@ class TorchTensor(AbstractTensor):
                 default is False.
         """
 
-        shared_tensor = self
         if self.has_child():
+<<<<<<< HEAD
             self.child = self.child.share(*owners, field=field, crypto_provider=crypto_provider)
             if no_wrap:
                 return self.child
+=======
+            chain = self.child.copy()
+            chain.owner = self.child.owner
+
+            kwargs = (
+                {"requires_grad": requires_grad} if isinstance(chain, syft.PointerTensor) else {}
+            )
+            shared_tensor = chain.share(
+                *owners, field=field, crypto_provider=crypto_provider, **kwargs
+            )
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
         else:
             shared_tensor = (
                 syft.AdditiveSharingTensor(
                     field=field, crypto_provider=crypto_provider, owner=self.owner
                 )
-                .on(self)
+                .on(self.copy())
                 .child.init_shares(*owners)
             )
             if not no_wrap:
                 shared_tensor = shared_tensor.wrap()
 
-        if requires_grad:
+        if not no_wrap:
+            shared_tensor = shared_tensor.wrap()
+
+        if requires_grad and not (
+            shared_tensor.is_wrapper and isinstance(shared_tensor.child, syft.PointerTensor)
+        ):
             shared_tensor = syft.AutogradTensor().on(shared_tensor)
 
         return shared_tensor

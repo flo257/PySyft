@@ -1,15 +1,15 @@
-from syft.frameworks.torch.pointers import create_callable_pointer
 from typing import List
 from typing import Union
 from typing import TYPE_CHECKING
 
 import syft as sy
-from syft.workers import AbstractWorker
+from syft.generic.pointers.callable_pointer import create_callable_pointer
+from syft.workers.abstract import AbstractWorker
 
 
 # this if statement avoids circular imports between base.py and pointer.py
 if TYPE_CHECKING:
-    from syft.workers import BaseWorker
+    from syft.workers.base import BaseWorker
 
 
 class ObjectWrapper:

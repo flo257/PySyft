@@ -1,6 +1,10 @@
 from multiprocessing import Process
 import syft as sy
+<<<<<<< HEAD
 from syft.workers import WebsocketServerWorker
+=======
+from syft.workers.websocket_server import WebsocketServerWorker
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 import torch
 import argparse
 import os

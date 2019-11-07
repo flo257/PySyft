@@ -8,8 +8,17 @@ class MSGTYPE(object):
     GET_SHAPE = 7
     SEARCH = 8
     FORCE_OBJ_DEL = 9
+    PLAN_CMD = 10
 
 
+<<<<<<< HEAD
+=======
+class PLAN_CMDS(object):
+    FETCH_PLAN = "fetch_plan"
+    FETCH_PROTOCOL = "fetch_protocol"
+
+
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 # Build automatically the reverse map from codes to messaging types
 code2MSGTYPE = {}
 for code in dir(MSGTYPE):

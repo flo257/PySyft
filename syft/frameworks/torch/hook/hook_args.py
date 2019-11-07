@@ -1,8 +1,6 @@
 import torch
-import syft as sy
-from syft.exceptions import RemoteObjectFoundError
-from syft.exceptions import PureTorchTensorFoundError
 
+<<<<<<< HEAD
 from syft.exceptions import ResponseSignatureError
 from syft.frameworks.torch.tensors.interpreters import AutogradTensor
 from syft.frameworks.torch.tensors.interpreters import AbstractTensor
@@ -14,15 +12,24 @@ from syft.frameworks.torch.tensors.interpreters import MultiPointerTensor
 from syft.frameworks.torch.tensors.interpreters import CRTPrecisionTensor
 from syft.frameworks.torch.tensors.interpreters import LargePrecisionTensor
 from syft.frameworks.torch.tensors.decorators import LoggingTensor
+=======
+from syft.frameworks.torch.tensors.interpreters.native import TorchTensor
+from syft.generic.frameworks.hook.hook_args import (
+    register_ambiguous_method,
+    register_ambiguous_function,
+    register_backward_func,
+    register_forward_func,
+    register_type_rule,
+    one,
+)
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
-from typing import Callable
-from typing import Union
-from typing import Tuple
-from typing import List
-
-import numpy as np
+from syft.exceptions import PureFrameworkTensorFoundError
 
 
+type_rule = {torch.Tensor: one, torch.nn.Parameter: one}
+
+<<<<<<< HEAD
 hook_method_args_functions = {}
 hook_method_response_functions = {}
 get_tensor_type_functions = {}
@@ -51,13 +58,15 @@ type_rule = {
 }
 
 # Dict to return the proper lambda function for the right torch or syft tensor type
+=======
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 forward_func = {
-    PointerTensor: lambda p: (_ for _ in ()).throw(RemoteObjectFoundError(p)),
     torch.Tensor: lambda i: i.child
     if hasattr(i, "child")
-    else (_ for _ in ()).throw(PureTorchTensorFoundError),
+    else (_ for _ in ()).throw(PureFrameworkTensorFoundError),
     torch.nn.Parameter: lambda i: i.child
     if hasattr(i, "child")
+<<<<<<< HEAD
     else (_ for _ in ()).throw(PureTorchTensorFoundError),
     LoggingTensor: lambda i: i.child,
     FixedPrecisionTensor: lambda i: i.child,
@@ -67,13 +76,16 @@ forward_func = {
     CRTPrecisionTensor: lambda i: i.child,
     LargePrecisionTensor: lambda i: i._internal_representation_to_large_ints(),
     "my_syft_tensor_type": lambda i: i.child,
+=======
+    else (_ for _ in ()).throw(PureFrameworkTensorFoundError),
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 }
 
-# Dict to return the proper lambda function for the right torch or syft tensor type
 backward_func = {
     TorchTensor: lambda i: i.wrap(),
     torch.Tensor: lambda i: i.wrap(),
     torch.nn.Parameter: lambda i: torch.nn.Parameter(data=i),
+<<<<<<< HEAD
     PointerTensor: lambda i: i,
     LoggingTensor: lambda i: LoggingTensor().on(i, wrap=False),
     FixedPrecisionTensor: lambda i, **kwargs: FixedPrecisionTensor(**kwargs).on(i, wrap=False),
@@ -745,23 +757,40 @@ def build_register_response(response: object, rules: Tuple, return_tuple: bool =
         else lambda i, **kwargs: register_tensor(i, **kwargs)
         for a, r in zip(response, rules)  # And do this for all the responses / rules provided
     ]
+=======
+}
 
-    # Instead of iterating which is slow, we use trick to efficiently
-    # apply each lambda to each arg
-    folds = {
-        0: zero_fold,
-        1: one_fold(return_tuple),
-        2: two_fold,
-        3: three_fold,
-        4: four_fold,
-        5: five_fold,
-        6: six_fold,
-        7: seven_fold,
-        8: eight_fold,
-    }
-    try:
-        f = folds[len(lambdas)]
-    except KeyError:
-        f = many_fold
+ambiguous_methods = {
+    "__getitem__",
+    "_getitem_public",
+    "__setitem__",
+    "view",
+    "permute",
+    "add_",
+    "sub_",
+    "new",
+    "chunk",
+}
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
-    return lambda x, **kwargs: f(lambdas, x, **kwargs)
+ambiguous_functions = {
+    "torch.unbind",
+    "unbind",
+    "torch.stack",
+    "stack",
+    "torch.cat",
+    "cat",
+    "torch.mean",
+    "torch.sum",
+    "torch.chunk",
+    "chunk",
+    "torch.functional.split",
+    "split",
+    "backward",
+}
+
+register_ambiguous_method(*ambiguous_methods)
+register_ambiguous_function(*ambiguous_functions)
+register_type_rule(type_rule)
+register_forward_func(forward_func)
+register_backward_func(backward_func)

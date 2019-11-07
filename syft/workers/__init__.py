@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from syft.workers.abstract import AbstractWorker  # noqa: F401
 from syft.workers.base import BaseWorker  # noqa: F401
 from syft.workers.virtual import VirtualWorker  # noqa: F401
@@ -14,3 +15,5 @@ if dependency_check.keras_available:
     from syft.workers.tfe import TFEWorker  # noqa: F401
 
     __all__.append("tfe")
+=======
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe

@@ -1,10 +1,9 @@
 from abc import ABC
 import functools
-import torch
 from typing import List
 
 import syft as sy
-import weakref
+from syft.generic.frameworks.hook import hook_args
 
 
 class AbstractObject(ABC):
@@ -66,6 +65,21 @@ class AbstractObject(ABC):
         except IndexError:
             return 0
 
+<<<<<<< HEAD:syft/frameworks/torch/tensors/interpreters/abstract.py
+=======
+    def describe(self, description: str) -> "AbstractObject":
+        self.description = description
+        return self
+
+    def tag(self, *_tags: str) -> "AbstractObject":
+        if self.tags is None:
+            self.tags = set()
+
+        for new_tag in _tags:
+            self.tags.add(new_tag)
+        return self
+
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe:syft/generic/object.py
     @property
     def shape(self):
         return self.child.shape
@@ -155,11 +169,14 @@ class AbstractObject(ABC):
         except AttributeError:
             pass
 
-        # TODO: I can't manage the import issue, can you?
         # Replace all LoggingTensor with their child attribute
+<<<<<<< HEAD:syft/frameworks/torch/tensors/interpreters/abstract.py
         new_args, new_kwargs, new_type = sy.frameworks.torch.hook_args.unwrap_args_from_function(
             cmd, args, kwargs
         )
+=======
+        new_args, new_kwargs, new_type = hook_args.unwrap_args_from_function(cmd, args, kwargs)
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe:syft/generic/object.py
 
         # build the new command
         new_command = (cmd, None, new_args, new_kwargs)
@@ -171,7 +188,7 @@ class AbstractObject(ABC):
         response = new_type.handle_func_command(new_command)
 
         # Put back LoggingTensor on the tensors found in the response
-        response = sy.frameworks.torch.hook_args.hook_response(cmd, response, wrap_type=cls)
+        response = hook_args.hook_response(cmd, response, wrap_type=cls)
 
         return response
 
@@ -199,6 +216,7 @@ class AbstractObject(ABC):
             return getattr(obj, attr, *args)
 
         return functools.reduce(_getattr, [obj] + attr.split("."))
+<<<<<<< HEAD:syft/frameworks/torch/tensors/interpreters/abstract.py
 
 
 class AbstractTensor(AbstractObject):
@@ -319,3 +337,5 @@ def _apply_args(hook_self, new_tensor, owner=None, id=None):
 
     new_tensor.id = id
     new_tensor.owner = owner
+=======
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe:syft/generic/object.py

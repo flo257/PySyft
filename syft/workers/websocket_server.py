@@ -1,10 +1,16 @@
+import asyncio
 import binascii
+import logging
+import socket
+import ssl
+import sys
 from typing import Union
 from typing import List
 
-import asyncio
+import tblib.pickling_support
 import torch
 import websockets
+<<<<<<< HEAD
 import ssl
 import sys
 import tblib.pickling_support
@@ -12,13 +18,18 @@ import socket
 import logging
 
 tblib.pickling_support.install()
+=======
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
 import syft as sy
-from syft.frameworks.torch.tensors.interpreters import AbstractTensor
+from syft.federated.federated_client import FederatedClient
+from syft.generic.tensor import AbstractTensor
 from syft.workers.virtual import VirtualWorker
+
 from syft.exceptions import GetNotPermittedError
 from syft.exceptions import ResponseSignatureError
-from syft.federated import FederatedClient
+
+tblib.pickling_support.install()
 
 
 class WebsocketServerWorker(VirtualWorker, FederatedClient):

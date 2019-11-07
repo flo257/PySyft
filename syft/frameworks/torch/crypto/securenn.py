@@ -434,9 +434,17 @@ def relu(a_sh):
     return a_sh * relu_deriv(a_sh) + u
 
 
+<<<<<<< HEAD
 def division(x_sh, y_sh, bit_len_max=Q_BITS):
     """ Performs division of encrypted numbers
     
+=======
+# In division, bit_len_max is set to Q_BITS // 2 to avoid overflow problems (multiplying by
+# 2**62 would almost always lead to overflow).
+def division(x_sh, y_sh, bit_len_max=Q_BITS // 2):
+    """ Performs division of encrypted numbers
+
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
     Args:
         x_sh, y_sh (AdditiveSharingTensor): the private tensors on which the op applies
         bit_len_max: the number of bits needed to represent the highest value in the tensors
@@ -491,10 +499,17 @@ def division(x_sh, y_sh, bit_len_max=Q_BITS):
 def maxpool(x_sh):
     """ Compute MaxPool: returns fresh shares of the max value in the input tensor
     and the index of this value in the flattened tensor
+<<<<<<< HEAD
     
     Args:
         x_sh (AdditiveSharingTensor): the private tensor on which the op applies
         
+=======
+
+    Args:
+        x_sh (AdditiveSharingTensor): the private tensor on which the op applies
+
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
     Returns:
         maximum value as an AdditiveSharingTensor
         index of this value in the flattened tensor as an AdditiveSharingTensor

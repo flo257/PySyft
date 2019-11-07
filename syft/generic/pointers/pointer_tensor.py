@@ -1,3 +1,4 @@
+<<<<<<< HEAD:syft/frameworks/torch/pointers/pointer_tensor.py
 import syft
 import torch
 from syft.frameworks.torch.tensors.interpreters import abstract
@@ -7,9 +8,26 @@ from syft.workers import AbstractWorker
 
 from typing import List
 from typing import Union
+=======
+from typing import List
+from typing import Union
+
+import syft
+from syft.generic.frameworks.hook.hook_args import one
+from syft.generic.frameworks.hook.hook_args import register_type_rule
+from syft.generic.frameworks.hook.hook_args import register_forward_func
+from syft.generic.frameworks.hook.hook_args import register_backward_func
+from syft.generic.frameworks.types import FrameworkShapeType
+from syft.generic.frameworks.types import FrameworkTensor
+from syft.generic.tensor import AbstractTensor
+from syft.generic.pointers.object_pointer import ObjectPointer
+from syft.workers.abstract import AbstractWorker
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe:syft/generic/pointers/pointer_tensor.py
+
+from syft.exceptions import RemoteObjectFoundError
 
 
-class PointerTensor(pointers.ObjectPointer, abstract.AbstractTensor):
+class PointerTensor(ObjectPointer, AbstractTensor):
     """A pointer to another tensor.
 
     A PointerTensor forwards all API calls to the remote.PointerTensor objects
@@ -19,7 +37,7 @@ class PointerTensor(pointers.ObjectPointer, abstract.AbstractTensor):
     remote machine as specified by self.location. Specifically, every
     PointerTensor has a tensor located somewhere that it points to (they should
     never exist by themselves). Note that PointerTensor objects can point to
-    both torch.Tensor objects AND to other PointerTensor objects. Furthermore,
+    both FrameworkTensor objects AND to other PointerTensor objects. Furthermore,
     the objects being pointed to can be on the same machine or (more commonly)
     on a different one. Note further that a PointerTensor does not know the
     nature how it sends messages to the tensor it points to (whether over
@@ -46,7 +64,7 @@ class PointerTensor(pointers.ObjectPointer, abstract.AbstractTensor):
         owner: "AbstractWorker" = None,
         id: Union[str, int] = None,
         garbage_collect_data: bool = True,
-        shape: torch.Size = None,
+        shape: FrameworkShapeType = None,
         point_to_attr: str = None,
         tags: List[str] = None,
         description: str = None,
@@ -136,7 +154,113 @@ class PointerTensor(pointers.ObjectPointer, abstract.AbstractTensor):
         self._data = new_data
 
     def is_none(self):
-        return self.owner.request_is_remote_tensor_none(self)
+        try:
+            return self.owner.request_is_remote_tensor_none(self)
+        except:
+            """TODO: this might hide useful errors, but we don't have good
+            enough remote error handling yet to do anything better."""
+            return True
+
+    @staticmethod
+    def create_pointer(
+        tensor,
+        location: AbstractWorker = None,
+        id_at_location: (str or int) = None,
+        register: bool = False,
+        owner: AbstractWorker = None,
+        ptr_id: (str or int) = None,
+        garbage_collect_data=None,
+        shape=None,
+        local_autograd=False,
+        preinitialize_grad=False,
+    ) -> "PointerTensor":
+        """Creates a pointer to the "self" FrameworkTensor object.
+
+        This method is called on a FrameworkTensor object, returning a pointer
+        to that object. This method is the CORRECT way to create a pointer,
+        and the parameters of this method give all possible attributes that
+        a pointer can be created with.
+
+        Args:
+            location: The AbstractWorker object which points to the worker on which
+                this pointer's object can be found. In nearly all cases, this
+                is self.owner and so this attribute can usually be left blank.
+                Very rarely you may know that you are about to move the Tensor
+                to another worker so you can pre-initialize the location
+                attribute of the pointer to some other worker, but this is a
+                rare exception.
+            id_at_location: A string or integer id of the tensor being pointed
+                to. Similar to location, this parameter is almost always
+                self.id and so you can leave this parameter to None. The only
+                exception is if you happen to know that the ID is going to be
+                something different than self.id, but again this is very rare
+                and most of the time, setting this means that you are probably
+                doing something you shouldn't.
+            register: A boolean parameter (default False) that determines
+                whether to register the new pointer that gets created. This is
+                set to false by default because most of the time a pointer is
+                initialized in this way so that it can be sent to someone else
+                (i.e., "Oh you need to point to my tensor? let me create a
+                pointer and send it to you" ). Thus, when a pointer gets
+                created, we want to skip being registered on the local worker
+                because the pointer is about to be sent elsewhere. However, if
+                you are initializing a pointer you intend to keep, then it is
+                probably a good idea to register it, especially if there is any
+                chance that someone else will initialize a pointer to your
+                pointer.
+            owner: A AbstractWorker parameter to specify the worker on which the
+                pointer is located. It is also where the pointer is registered
+                if register is set to True.
+            ptr_id: A string or integer parameter to specify the id of the pointer
+                in case you wish to set it manually for any special reason.
+                Otherwise, it will be set randomly.
+            garbage_collect_data: If true (default), delete the remote tensor when the
+                pointer is deleted.
+            local_autograd: Use autograd system on the local machine instead of PyTorch's
+                autograd on the workers.
+            preinitialize_grad: Initialize gradient for AutogradTensors to a tensor.
+
+        Returns:
+            A FrameworkTensor[PointerTensor] pointer to self. Note that this
+            object itself will likely be wrapped by a FrameworkTensor wrapper.
+        """
+        if owner is None:
+            owner = tensor.owner
+
+        if location is None:
+            location = tensor.owner.id
+
+        owner = tensor.owner.get_worker(owner)
+        location = tensor.owner.get_worker(location)
+
+        # previous_pointer = owner.get_pointer_to(location, id_at_location)
+        previous_pointer = None
+
+        if previous_pointer is None:
+            ptr = PointerTensor(
+                location=location,
+                id_at_location=id_at_location,
+                owner=owner,
+                id=ptr_id,
+                garbage_collect_data=True if garbage_collect_data is None else garbage_collect_data,
+                shape=shape,
+                tags=tensor.tags,
+                description=tensor.description,
+            )
+
+        return ptr
+
+    def move(self, location):
+        ptr = self.owner.send(self, location)
+        ptr.remote_get()
+        # don't want it to accidentally delete the remote object
+        # when this pointer is deleted
+        ptr.garbage_collect_data = False
+        return ptr
+
+    def remote_get(self):
+        self.owner.send_command(message=("mid_get", self, (), {}), recipient=self.location)
+        return self
 
     @staticmethod
     def create_pointer(
@@ -265,25 +389,25 @@ class PointerTensor(pointers.ObjectPointer, abstract.AbstractTensor):
             An AbstractTensor object which is the tensor (or chain) that this
             object used to point to #on a remote machine.
         """
-        tensor = pointers.ObjectPointer.get(self, deregister_ptr=deregister_ptr)
+        tensor = ObjectPointer.get(self, deregister_ptr=deregister_ptr)
 
         # TODO: remove these 3 lines
         # The fact we have to check this means
         # something else is probably broken
         if tensor.is_wrapper:
-            if isinstance(tensor.child, torch.Tensor):
+            if isinstance(tensor.child, FrameworkTensor):
                 return tensor.child
 
         return tensor
 
     def attr(self, attr_name):
-        attr_ptr = syft.PointerTensor(
+        attr_ptr = PointerTensor(
             id=self.id,
             owner=self.owner,
             location=self.location,
             id_at_location=self.id_at_location,
             point_to_attr=self._create_attr_name_string(attr_name),
-        ).wrap()
+        ).wrap(register=False)
         self.__setattr__(attr_name, attr_ptr)
         return attr_ptr
 
@@ -306,6 +430,26 @@ class PointerTensor(pointers.ObjectPointer, abstract.AbstractTensor):
         return response
 
     fix_precision = fix_prec
+<<<<<<< HEAD:syft/frameworks/torch/pointers/pointer_tensor.py
+=======
+
+    def float_prec(self, *args, **kwargs):
+        """
+        Send a command to remote worker to transform a fix_precision tensor back to float_precision
+
+        Returns:
+            A pointer to a Tensor
+        """
+
+        # Send the command
+        command = ("float_prec", self, args, kwargs)
+
+        response = self.owner.send_command(self.location, command)
+
+        return response
+
+    float_precision = float_prec
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe:syft/generic/pointers/pointer_tensor.py
 
     def share(self, *args, **kwargs):
         """
@@ -342,7 +486,7 @@ class PointerTensor(pointers.ObjectPointer, abstract.AbstractTensor):
         """
         This function takes the attributes of a PointerTensor and saves them in a dictionary
         Args:
-            ptr (pointers.PointerTensor): a PointerTensor
+            ptr (PointerTensor): a PointerTensor
         Returns:
             tuple: a tuple holding the unique attributes of the pointer
         Examples:
@@ -376,7 +520,7 @@ class PointerTensor(pointers.ObjectPointer, abstract.AbstractTensor):
             worker: the worker doing the deserialization
             tensor_tuple: a tuple holding the attributes of the PointerTensor
         Returns:
-            PointerTensor: a pointers.PointerTensor
+            PointerTensor: a PointerTensor
         Examples:
             ptr = detail(data)
         """
@@ -387,7 +531,11 @@ class PointerTensor(pointers.ObjectPointer, abstract.AbstractTensor):
             worker_id = worker_id.decode()
 
         if shape is not None:
+<<<<<<< HEAD:syft/frameworks/torch/pointers/pointer_tensor.py
             shape = torch.Size(syft.serde._detail(worker, shape))
+=======
+            shape = syft.hook.create_shape(syft.serde._detail(worker, shape))
+>>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe:syft/generic/pointers/pointer_tensor.py
 
         # If the pointer received is pointing at the current worker, we load the tensor instead
         if worker_id == worker.id:
@@ -402,7 +550,7 @@ class PointerTensor(pointers.ObjectPointer, abstract.AbstractTensor):
 
                 if tensor is not None:
 
-                    if not tensor.is_wrapper and not isinstance(tensor, torch.Tensor):
+                    if not tensor.is_wrapper and not isinstance(tensor, FrameworkTensor):
                         # if the tensor is a wrapper then it doesn't need to be wrapped
                         # i the tensor isn't a wrapper, BUT it's just a plain torch tensor,
                         # then it doesn't need to be wrapped.
@@ -415,9 +563,9 @@ class PointerTensor(pointers.ObjectPointer, abstract.AbstractTensor):
         # Else we keep the same Pointer
         else:
 
-            location = syft.torch.hook.local_worker.get_worker(worker_id)
+            location = syft.hook.local_worker.get_worker(worker_id)
 
-            ptr = pointers.PointerTensor(
+            ptr = PointerTensor(
                 location=location,
                 id_at_location=id_at_location,
                 owner=worker,
@@ -440,3 +588,9 @@ class PointerTensor(pointers.ObjectPointer, abstract.AbstractTensor):
         #         val = v
         #     new_data[key] = val
         # return PointerTensor(**new_data)
+
+
+### Register the tensor with hook_args.py ###
+register_type_rule({PointerTensor: one})
+register_forward_func({PointerTensor: lambda p: (_ for _ in ()).throw(RemoteObjectFoundError(p))})
+register_backward_func({PointerTensor: lambda i: i})
