@@ -2,7 +2,7 @@
 #number of distributed sources: 5
 #batch size: 50
 #distribution of data: equally distributed subset
-#percentage of backdoored nodes: 0.2
+#percentage of backdoored nodes: 0.5
 #percentage of poisoned data in backdoored nodes: 100
 #way backdoor looks like: green_squares
 #order of time: backdoors first
