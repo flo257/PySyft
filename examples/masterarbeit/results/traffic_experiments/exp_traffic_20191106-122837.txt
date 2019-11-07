@@ -1,5 +1,5 @@
 #merge strategy: sequential
-#number of distributed sources: 5
+#number of distributed sources: 10
 #batch size: 50
 #distribution of data: equally distributed subset
 #percentage of backdoored nodes: 0.5
