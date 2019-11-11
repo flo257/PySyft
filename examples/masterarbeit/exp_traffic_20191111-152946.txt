@@ -1,0 +1,17 @@
+#merge strategy: sequential
+#number of distributed sources: 5
+#batch size: 10
+#distribution of data: equally distributed subset
+#percentage of backdoored nodes: 0.2
+#percentage of poisoned data in backdoored nodes: 100
+#way backdoor looks like: green_squares
+#order of time: backdoors last
+#attack model: basic
+#starttime: 152946
+training_type;epoch_number;learn_rate;avg_training_loss;avg_test_loss;test_accuracy;timestamp
+normal;1;0.01;1.0653536319732666;14.404576493150557;5.4676658340271995;154934
+backdoor;1;0.01;0.06889331340789795;0.00044283702293902797;100.0;155432
+normal;2;0.01;0.20115631818771362;11.88881634858047;5.4676658340271995;161502
+backdoor;2;0.01;0.06840452551841736;0.00027641800794281547;100.0;162001
+normal;3;0.01;0.10733331739902496;11.592906776473423;5.4676658340271995;164035
+backdoor;3;0.01;0.0706082135438919;0.0002460804480868632;100.0;164542
