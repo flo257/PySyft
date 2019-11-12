@@ -1,20 +1,12 @@
 import torch
 
 import syft
-<<<<<<< HEAD
-from syft.workers import AbstractWorker
-from syft.frameworks.torch.tensors.interpreters.abstract import AbstractTensor
-from syft.frameworks.torch.tensors.interpreters.additive_shared import AdditiveSharingTensor
-from syft.frameworks.torch.tensors.interpreters.multi_pointer import MultiPointerTensor
-from syft.frameworks.torch.overload_torch import overloaded
-=======
 from syft.workers.abstract import AbstractWorker
 from syft.generic.frameworks.hook import hook_args
 from syft.generic.pointers.multi_pointer import MultiPointerTensor
 from syft.generic.tensor import AbstractTensor
 from syft.frameworks.torch.tensors.interpreters.additive_shared import AdditiveSharingTensor
 from syft.generic.frameworks.overload import overloaded
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
 
 class FixedPrecisionTensor(AbstractTensor):
@@ -54,10 +46,6 @@ class FixedPrecisionTensor(AbstractTensor):
         self.base = base
         self.precision_fractional = precision_fractional
         self.kappa = kappa
-<<<<<<< HEAD
-        self.torch_max_value = torch.tensor(self.field).long()
-=======
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     def get_class_attributes(self):
         """
@@ -126,11 +114,7 @@ class FixedPrecisionTensor(AbstractTensor):
         value = self.child.long() % self.field
         torch_max_value = torch.tensor(self.field).long()
 
-<<<<<<< HEAD
-        gate = value.native_gt(self.torch_max_value / 2).long()
-=======
         gate = value.native_gt(torch_max_value / 2).long()
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
         neg_nums = (value - self.field) * gate
         pos_nums = value * (1 - gate)
         result = (neg_nums + pos_nums).float() / (self.base ** self.precision_fractional)
@@ -147,12 +131,8 @@ class FixedPrecisionTensor(AbstractTensor):
             self.child = self.child / truncation
             return self
         else:
-<<<<<<< HEAD
-            gate = self.child.native_gt(self.torch_max_value / 2).long()
-=======
             torch_max_value = torch.tensor(self.field).long()
             gate = self.child.native_gt(torch_max_value / 2).long()
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
             neg_nums = (self.child - self.field) / truncation + self.field
             pos_nums = self.child / truncation
             self.child = neg_nums * gate + pos_nums * (1 - gate)
@@ -248,40 +228,6 @@ class FixedPrecisionTensor(AbstractTensor):
         Hook manually mul and div to add the trucation/rescaling part
         which is inherent to these operations in the fixed precision setting
         """
-<<<<<<< HEAD
-        if isinstance(other, (int, torch.Tensor)):
-            new_self = self.child
-            new_other = other
-
-        elif isinstance(self.child, (AdditiveSharingTensor, MultiPointerTensor)) and isinstance(
-            other.child, torch.Tensor
-        ):
-            # If we try to multiply a FPT>AST with a FPT>torch.tensor,
-            # we want to perform AST * torch.tensor
-            new_self = self.child
-            new_other = other
-
-        elif isinstance(other.child, (AdditiveSharingTensor, MultiPointerTensor)) and isinstance(
-            self.child, torch.Tensor
-        ):
-            # If we try to multiply a FPT>torch.tensor with a FPT>AST,
-            # we swap operators so that we do the same operation as above
-            new_self = other.child
-            new_other = self
-
-        elif isinstance(self.child, (AdditiveSharingTensor, MultiPointerTensor)) and isinstance(
-            other.child, (AdditiveSharingTensor, MultiPointerTensor)
-        ):
-            # If we try to multiply a FPT>torch.tensor with a FPT>AST,
-            # we swap operators so that we do the same operation as above
-            new_self, new_other, _ = syft.frameworks.torch.hook_args.unwrap_args_from_method(
-                "mul", self, other, None
-            )
-
-        elif isinstance(self.child, torch.Tensor) and isinstance(other.child, torch.Tensor):
-            new_self, new_other, _ = syft.frameworks.torch.hook_args.unwrap_args_from_method(
-                "mul", self, other, None
-=======
         changed_sign = False
         if isinstance(other, FixedPrecisionTensor):
             assert (
@@ -363,7 +309,6 @@ class FixedPrecisionTensor(AbstractTensor):
                 (self.field - new_other) * (1 - sgn_other)
                 if isinstance(new_other, torch.Tensor)
                 else new_other * (sgn_other - 1)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
             )
             new_other = neg_other + pos_other
 
@@ -376,24 +321,6 @@ class FixedPrecisionTensor(AbstractTensor):
             if cmd == "div":
                 new_self *= self.base ** self.precision_fractional
 
-            # To avoid problems when multiplying 2 negative numbers
-            # we take absolute value of the operands
-
-            # sgn_self is 1 when new_self is positive else it's 0
-            sgn_self = (new_self < self.field // 2).long()
-            pos_self = new_self * sgn_self
-            neg_self = (self.field - new_self) * (1 - sgn_self)
-            new_self = neg_self + pos_self
-
-            # sgn_other is 1 when new_other is positive else it's 0
-            sgn_other = (new_other < self.field // 2).long()
-            pos_other = new_other * sgn_other
-            neg_other = (self.field - new_other) * (1 - sgn_other)
-            new_other = neg_other + pos_other
-
-            # If both have the same sign, sgn is 1 else it's 0
-            sgn = 1 - (sgn_self - sgn_other) ** 2
-
         # Send it to the appropriate class and get the response
         response = getattr(new_self, cmd)(new_other)
 
@@ -402,16 +329,6 @@ class FixedPrecisionTensor(AbstractTensor):
             cmd, response, wrap_type=type(self), wrap_args=self.get_class_attributes()
         )
 
-<<<<<<< HEAD
-        if not isinstance(other, (int, torch.Tensor)):
-            response = response.truncate(self.precision_fractional, check_sign=False)
-            response %= self.field  # Wrap around the field
-
-            if isinstance(self.child, torch.Tensor) and isinstance(other.child, torch.Tensor):
-                # Give back its sign to response
-                pos_res = response * sgn
-                neg_res = (self.field - response) * (1 - sgn)
-=======
         if not isinstance(other, (int, torch.Tensor, AdditiveSharingTensor)):
             if cmd == "mul":
                 # If operation is mul, we need to truncate
@@ -423,26 +340,19 @@ class FixedPrecisionTensor(AbstractTensor):
                 # Give back its sign to response
                 pos_res = response * sgn
                 neg_res = response * (sgn - 1)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
                 response = neg_res + pos_res
 
         else:
             response %= self.field  # Wrap around the field
 
         return response
-<<<<<<< HEAD
-=======
 
     def mul(self, other):
         return self.mul_and_div(other, "mul")
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     __mul__ = mul
 
     def __imul__(self, other):
-<<<<<<< HEAD
-        self = self.mul(other)
-=======
         self = self.mul_and_div(other, "mul")
         return self
 
@@ -455,7 +365,6 @@ class FixedPrecisionTensor(AbstractTensor):
 
     def __itruediv__(self, other):
         self = self.mul_and_div(other, "div")
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
         return self
 
     def pow(self, power):
@@ -514,11 +423,7 @@ class FixedPrecisionTensor(AbstractTensor):
 
         else:
             # Replace all syft tensor with their child attribute
-<<<<<<< HEAD
-            new_self, new_args, new_kwargs = syft.frameworks.torch.hook_args.unwrap_args_from_method(
-=======
             new_self, new_args, new_kwargs = hook_args.unwrap_args_from_method(
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
                 "matmul", self, args, kwargs
             )
 
@@ -601,8 +506,6 @@ class FixedPrecisionTensor(AbstractTensor):
 
         module.addmm = addmm
 
-<<<<<<< HEAD
-=======
         def sigmoid(tensor):
             """
             Overloads torch.sigmoid to be able to use MPC
@@ -636,7 +539,6 @@ class FixedPrecisionTensor(AbstractTensor):
 
         module.tanh = tanh
 
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
         def dot(self, other):
             return self.__mul__(other).sum()
 
@@ -822,13 +724,7 @@ class FixedPrecisionTensor(AbstractTensor):
             pass
 
         # Replace all FixedPrecisionTensor with their child attribute
-<<<<<<< HEAD
-        new_args, new_kwargs, new_type = syft.frameworks.torch.hook_args.unwrap_args_from_function(
-            cmd, args, kwargs
-        )
-=======
         new_args, new_kwargs, new_type = hook_args.unwrap_args_from_function(cmd, args, kwargs)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
         # build the new command
         new_command = (cmd, None, new_args, new_kwargs)

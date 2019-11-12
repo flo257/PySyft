@@ -8,20 +8,6 @@ import types
 
 
 import syft
-<<<<<<< HEAD
-from syft import workers
-
-from syft.workers import BaseWorker
-from syft.messaging import Plan
-from syft.frameworks.torch.tensors.interpreters import AutogradTensor
-from syft.frameworks.torch.tensors.interpreters import TorchTensor
-from syft.frameworks.torch.pointers import PointerTensor
-from syft.frameworks.torch.tensors.decorators import LoggingTensor
-from syft.frameworks.torch.tensors.interpreters import FixedPrecisionTensor
-from syft.frameworks.torch.tensors.interpreters import AdditiveSharingTensor
-from syft.frameworks.torch.tensors.interpreters import MultiPointerTensor
-from syft.frameworks.torch.tensors.interpreters import LargePrecisionTensor
-=======
 from syft.generic.frameworks.hook import hook_args
 from syft.generic.frameworks.hook.hook import FrameworkHook
 from syft.frameworks.torch.tensors.interpreters.autograd import AutogradTensor
@@ -30,7 +16,6 @@ from syft.frameworks.torch.tensors.decorators.logging import LoggingTensor
 from syft.frameworks.torch.tensors.interpreters.precision import FixedPrecisionTensor
 from syft.frameworks.torch.tensors.interpreters.additive_shared import AdditiveSharingTensor
 from syft.frameworks.torch.tensors.interpreters.large_precision import LargePrecisionTensor
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 from syft.frameworks.torch.torch_attributes import TorchAttributes
 from syft.generic.pointers.multi_pointer import MultiPointerTensor
 from syft.generic.pointers.pointer_tensor import PointerTensor
@@ -429,21 +414,11 @@ class TorchHook(FrameworkHook):
 
                 self._perform_function_overloading(torch_module, func)
 
-<<<<<<< HEAD
-            response = owner.send_command(location, command)
-
-            # For inplace methods, just directly return self
-            if syft.torch.is_inplace_method(attr):
-                return self
-
-            return response
-=======
     @classmethod
     def _get_hooked_func(cls, attr):
         """Torch-specific implementation. See the subclass for more."""
         if attr.__module__ is None:
             attr.__module__ = "torch"
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
         return super()._get_hooked_func(attr)
 
@@ -467,11 +442,7 @@ class TorchHook(FrameworkHook):
             """
 
             # Replace all syft tensor with their child attribute
-<<<<<<< HEAD
-            new_self, new_args, new_kwargs = syft.frameworks.torch.hook_args.unwrap_args_from_method(
-=======
             new_self, new_args, new_kwargs = hook_args.unwrap_args_from_method(
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
                 attr, self, args, kwargs
             )
 
@@ -491,213 +462,6 @@ class TorchHook(FrameworkHook):
 
         return overloaded_attr
 
-<<<<<<< HEAD
-    def get_hooked_multi_pointer_method(hook_self, attr):
-        """
-        Hook a method to send it multiple recmote workers
-
-        Args:
-            attr (str): the method to hook
-        Return:
-            the hooked method
-        """
-
-        def dispatch(args, k):
-            return map(lambda x: x[k] if isinstance(x, dict) else x, args)
-
-        @wraps(attr)
-        def overloaded_attr(self, *args, **kwargs):
-            """
-            Operate the hooking
-            """
-
-            # Replace all syft tensor with their child attribute
-            new_self, new_args, new_kwargs = syft.frameworks.torch.hook_args.unwrap_args_from_method(
-                attr, self, args, kwargs
-            )
-
-            results = {}
-            for k, v in new_self.items():
-                results[k] = v.__getattribute__(attr)(*dispatch(new_args, k), **new_kwargs)
-
-            # Put back MultiPointerTensor on the tensors found in the response
-            response = syft.frameworks.torch.hook_args.hook_response(
-                attr, results, wrap_type=MultiPointerTensor, wrap_args=self.get_class_attributes()
-            )
-
-            return response
-
-        return overloaded_attr
-
-    def get_hooked_syft_method(hook_self, attr):
-        """
-        Hook a method in order to replace all args/kwargs syft/torch tensors with
-        their child attribute, forward this method with the new args and new self,
-        get response and "rebuild" the syft tensor wrapper upon all tensors found
-
-        Args:
-            attr (str): the method to hook
-        Return:
-            the hooked method
-        """
-
-        @wraps(attr)
-        def overloaded_syft_method(self, *args, **kwargs):
-            """
-            Operate the hooking
-            """
-            # TODO: I can't manage the import issue, can you?
-            # Replace all syft tensor with their child attribute
-            new_self, new_args, new_kwargs = syft.frameworks.torch.hook_args.unwrap_args_from_method(
-                attr, self, args, kwargs
-            )
-
-            # Send it to the appropriate class and get the response
-            response = getattr(new_self, attr)(*new_args, **new_kwargs)
-
-            # Put back SyftTensor on the tensors found in the response
-            response = syft.frameworks.torch.hook_args.hook_response(
-                attr, response, wrap_type=type(self), wrap_args=self.get_class_attributes()
-            )
-
-            return response
-
-        return overloaded_syft_method
-
-    def get_hooked_method(hook_self, method_name):
-        """
-        Hook a method in order to replace all args/kwargs syft/torch tensors with
-        their child attribute if they exist
-        If so, forward this method with the new args and new self, get response
-        and "rebuild" the torch tensor wrapper upon all tensors found
-        If not, just execute the native torch methodn
-
-        Args:
-            attr (str): the method to hook
-        Return:
-            the hooked method
-        """
-
-        @wraps(method_name)
-        def overloaded_native_method(self, *args, **kwargs):
-            """
-            Operate the hooking
-            """
-
-            if not hasattr(self, "child"):  # means that it's not a wrapper
-                method = getattr(self, f"native_{method_name}")
-                # Run the native function with the new args
-
-                try:
-                    response = method(*args, **kwargs)
-                except BaseException as e:
-                    # we can make some errors more descriptive with this method
-                    raise route_method_exception(e, self, args, kwargs)
-
-            else:  # means that there is a wrapper to remove
-                try:
-                    # Replace all torch tensor with their child attribute
-                    new_self, new_args, new_kwargs = syft.frameworks.torch.hook_args.unwrap_args_from_method(
-                        method_name, self, args, kwargs
-                    )
-                except BaseException as e:
-                    # we can make some errors more descriptive with this method
-                    raise route_method_exception(e, self, args, kwargs)
-
-                # Send the new command to the appropriate class and get the response
-                method = getattr(new_self, method_name)
-                response = method(*new_args, **new_kwargs)
-
-                # For inplace methods, just directly return self
-                if syft.torch.is_inplace_method(method_name):
-                    return self
-
-                # Put back the wrappers where needed
-                response = syft.frameworks.torch.hook_args.hook_response(
-                    method_name, response, wrap_type=type(self), new_self=self
-                )
-
-            return response
-
-        return overloaded_native_method
-
-    def get_hooked_func(hook_self, attr):
-        """
-        Hook a function in order to inspect its args and search for pointer
-        or other syft tensors.
-        - Calls to this function with normal tensors or numbers / string trigger
-          usual behaviour
-        - Calls with pointers send the command to the location of the pointer(s)
-        - Calls with syft tensor will in the future trigger specific behaviour
-
-        Args:
-            attr (str): the method to hook
-        Return:
-            the hooked method
-        """
-
-        if attr.__module__ is None:
-            attr.__module__ = "torch"
-
-        cmd_name = f"{attr.__module__}.{attr.__name__}"
-
-        @wraps(attr)
-        def overloaded_func(*args, **kwargs):
-            """
-            Operate the hooking
-            """
-            try:
-                tensor_type = (
-                    type(args[0]) if not isinstance(args[0], (tuple, list)) else type(args[0][0])
-                )
-            except IndexError:
-                tensor_type = TorchTensor
-
-            command = (cmd_name, None, args, kwargs)
-
-            try:
-                handle_func_command = tensor_type.handle_func_command
-            except AttributeError:
-                handle_func_command = TorchTensor.handle_func_command
-
-            response = handle_func_command(command)
-
-            return response
-
-        return overloaded_func
-
-    def _add_registration_to___init__(hook_self, tensor_type: type, torch_tensor: bool = False):
-        """Adds several attributes to the tensor.
-
-        Overloads tensor_type.__init__ to add several attributes to the tensor
-        as well as (optionally) registering the tensor automatically.
-        TODO: auto-registration is disabled at the moment, this might be bad.
-
-        Args:
-            tensor_type: The type of tensor being hooked (in this refactor this
-                is only ever torch.Tensor, but in previous versions of PySyft
-                this iterated over all tensor types.
-            torch_tensor: An optional boolean parameter (default False) to
-                specify whether to skip running the native initialization
-                logic. TODO: this flag might never get used.
-        """
-        if "native___init__" not in dir(tensor_type):
-            tensor_type.native___init__ = tensor_type.__init__
-
-        def new___init__(cls, *args, owner=None, id=None, register=True, **kwargs):
-            initialize_tensor(
-                hook_self=hook_self,
-                cls=cls,
-                id=id,
-                torch_tensor=torch_tensor,
-                init_args=args,
-                init_kwargs=kwargs,
-            )
-
-        tensor_type.__init__ = new___init__
-
-=======
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
     def _hook_tensor(hook_self):
         """Hooks the function torch.tensor()
         We need to do this seperately from hooking the class because internally
@@ -787,11 +551,7 @@ class TorchHook(FrameworkHook):
                 create_grad_objects(nn_self)
 
             for p in nn_self.parameters():
-<<<<<<< HEAD
-                p.send_(*dest)
-=======
                 p.send_(*dest, **kwargs)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
             if isinstance(nn_self.forward, Plan):
                 nn_self.forward.send(*dest, force=force_send)

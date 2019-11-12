@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import syft as sy
-
-from syft.workers import AbstractWorker
-
-
-class Message:
-    def __init__(self, msg_type, contents):
-        self.msg_type = msg_type
-        self.contents = contents
-=======
 """
 This file exists as the Python encoding of all Message types that Syft sends over the network. It is
 an important bottleneck in the system, impacting both security, performance, and cross-platform
@@ -57,7 +46,6 @@ class Message:
             return self._contents
         else:
             return None
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     def _simplify(self):
         return (self.msg_type, self.contents)
@@ -65,12 +53,8 @@ class Message:
     @staticmethod
     def simplify(ptr: "Message") -> tuple:
         """
-<<<<<<< HEAD
-        This function takes the attributes of a Message and saves them in a tuple
-=======
         This function takes the attributes of a Message and saves them in a tuple.
         The detail() method runs the inverse of this method.
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
         Args:
             ptr (Message): a Message
         Returns:
@@ -82,10 +66,6 @@ class Message:
         return (ptr.msg_type, sy.serde._simplify(ptr.contents))
 
     @staticmethod
-<<<<<<< HEAD
-    def detail(worker: AbstractWorker, tensor_tuple: tuple) -> "Message":
-        return Message(tensor_tuple[0], sy.serde._detail(worker, tensor_tuple[1]))
-=======
     def detail(worker: AbstractWorker, msg_tuple: tuple) -> "Message":
         """
         This function takes the simplified tuple version of this message and converts
@@ -461,4 +441,3 @@ class PlanCommandMessage(Message):
         return PlanCommandMessage(
             sy.serde._detail(worker, command_name), sy.serde._detail(worker, message)
         )
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe

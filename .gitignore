@@ -20,4 +20,3 @@ docs/_modules
 .vscode/
 **/pip-wheel-metadata
 
-*.pt

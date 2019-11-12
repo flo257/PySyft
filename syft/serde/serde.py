@@ -41,17 +41,6 @@ from lz4 import (  # noqa: F401
 import msgpack
 import zstd
 
-<<<<<<< HEAD
-import syft as sy
-
-from syft.federated import TrainConfig
-
-from syft.workers import AbstractWorker
-from syft.workers import VirtualWorker
-
-from syft.messaging import Plan
-from syft.messaging import Message
-=======
 import syft
 from syft import dependency_check
 from syft.federated.train_config import TrainConfig
@@ -79,7 +68,6 @@ from syft.messaging.message import PlanCommandMessage
 from syft.serde.native_serde import MAP_NATIVE_SIMPLIFIERS_AND_DETAILERS
 from syft.workers.abstract import AbstractWorker
 from syft.workers.base import BaseWorker
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
 from syft.exceptions import CompressionNotFoundException
 from syft.exceptions import GetNotPermittedError
@@ -90,22 +78,10 @@ if dependency_check.torch_available:
 else:
     MAP_TORCH_SIMPLIFIERS_AND_DETAILERS = {}
 
-<<<<<<< HEAD
-from syft.frameworks.torch.tensors.decorators import LoggingTensor
-from syft.frameworks.torch.tensors.interpreters import FixedPrecisionTensor
-from syft.frameworks.torch.tensors.interpreters import AdditiveSharingTensor
-from syft.frameworks.torch.tensors.interpreters import CRTPrecisionTensor
-from syft.frameworks.torch.tensors.interpreters import MultiPointerTensor
-from syft.frameworks.torch import pointers
-
-from syft.serde.native_serde import MAP_NATIVE_SIMPLIFIERS_AND_DETAILERS
-from syft.serde.torch_serde import MAP_TORCH_SIMPLIFIERS_AND_DETAILERS
-=======
 if dependency_check.tensorflow_available:
     from syft_tensorflow.serde import MAP_TF_SIMPLIFIERS_AND_DETAILERS
 else:
     MAP_TF_SIMPLIFIERS_AND_DETAILERS = {}
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
 # Maps a type to a tuple containing its simplifier and detailer function
 MAP_TO_SIMPLIFIERS_AND_DETAILERS = OrderedDict(
@@ -128,10 +104,6 @@ OBJ_SIMPLIFIER_AND_DETAILERS = [
     PointerProtocol,
     ObjectWrapper,
     TrainConfig,
-<<<<<<< HEAD
-    VirtualWorker,
-    Message,
-=======
     BaseWorker,
     AutogradTensor,
     Message,
@@ -143,7 +115,6 @@ OBJ_SIMPLIFIER_AND_DETAILERS = [
     ForceObjectDeleteMessage,
     SearchMessage,
     PlanCommandMessage,
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 ]
 
 # If an object implements its own force_simplify and force_detail functions it should be stored in this list

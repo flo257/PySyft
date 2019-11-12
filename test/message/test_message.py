@@ -1,11 +1,4 @@
 import syft as sy
-<<<<<<< HEAD
-
-
-def test_message_serde(hook):
-
-    x = sy.Message(0, [1, 2, 3])
-=======
 import torch as th
 
 import syft as sy
@@ -142,7 +135,6 @@ def test_search_message_serde():
 
     x = message.SearchMessage([1, 2, 3])
 
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
     x_bin = sy.serde.serialize(x)
     y = sy.serde.deserialize(x_bin, sy.local_worker)
 

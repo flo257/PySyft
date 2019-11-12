@@ -11,8 +11,6 @@ from syft.workers.abstract import AbstractWorker
 
 no_wrap = {"no_wrap": True}
 
-no_wrap = {"no_wrap": True}
-
 
 class AdditiveSharingTensor(AbstractTensor):
     def __init__(
@@ -538,15 +536,8 @@ class AdditiveSharingTensor(AbstractTensor):
         result = self.__truediv__(*args, **kwargs)
         self.child = result.child
 
-<<<<<<< HEAD
-    @overloaded.method
-    def __truediv__(self, shares: dict, divisor):
-        # TODO: how to correctly handle division in Zq?
-        assert isinstance(divisor, int)
-=======
     def _private_div(self, divisor):
         return securenn.division(self, divisor)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     @overloaded.method
     def _public_div(self, shares: dict, divisor):
@@ -565,9 +556,6 @@ class AdditiveSharingTensor(AbstractTensor):
 
         return divided_shares
 
-<<<<<<< HEAD
-    div = __truediv__
-=======
     def div(self, divisor):
         if isinstance(divisor, AdditiveSharingTensor):
             return self._private_div(divisor)
@@ -575,7 +563,6 @@ class AdditiveSharingTensor(AbstractTensor):
             return self._public_div(divisor)
 
     __truediv__ = div
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     @overloaded.method
     def mod(self, shares: dict, modulus: int):
@@ -724,28 +711,6 @@ class AdditiveSharingTensor(AbstractTensor):
             return tensor.chunk(*args, **kwargs)
 
         module.chunk = chunk
-
-        @overloaded.function
-        def roll(tensor_shares, shifts, **kwargs):
-            """ Return a tensor where values are cyclically shifted compared to the original one.
-            For instance, torch.roll([1, 2, 3], 1) returns torch.tensor([3, 1, 2]).
-            In **kwargs should be dims, an argument to tell along which dimension the tensor should
-            be rolled. If dims is None, the tensor is flattened, rolled, and restored to its original shape.
-            shifts and dims can be tuples of same length to perform several rolls along different dimensions.
-            """
-            results = {}
-            for worker, share in tensor_shares.items():
-                if isinstance(shifts, dict):
-                    results[worker] = torch.roll(share, shifts[worker], **kwargs)
-                elif isinstance(shifts, tuple) and isinstance(shifts[0], dict):
-                    worker_shifts = [s[worker] for s in shifts]
-                    results[worker] = torch.roll(share, worker_shifts, **kwargs)
-                else:
-                    results[worker] = torch.roll(share, shifts, **kwargs)
-
-            return results
-
-        module.roll = roll
 
         @overloaded.function
         def roll(tensor_shares, shifts, **kwargs):
@@ -963,20 +928,10 @@ class AdditiveSharingTensor(AbstractTensor):
         if not isinstance(cmd, str):
             return cmd(*args, **kwargs)
 
-<<<<<<< HEAD
-        tensor = args[0] if not isinstance(args[0], tuple) else args[0][0]
-
-        # TODO: I can't manage the import issue, can you?
-        # Replace all SyftTensors with their child attribute
-        new_args, new_kwargs, new_type = sy.frameworks.torch.hook_args.unwrap_args_from_function(
-            cmd, args, kwargs
-        )
-=======
         tensor = args[0] if not isinstance(args[0], (tuple, list)) else args[0][0]
 
         # Replace all SyftTensors with their child attribute
         new_args, new_kwargs, new_type = hook_args.unwrap_args_from_function(cmd, args, kwargs)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
         results = {}
         for worker, share in new_args[0].items():

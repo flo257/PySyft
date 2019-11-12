@@ -10,16 +10,6 @@ from typing import List
 import tblib.pickling_support
 import torch
 import websockets
-<<<<<<< HEAD
-import ssl
-import sys
-import tblib.pickling_support
-import socket
-import logging
-
-tblib.pickling_support.install()
-=======
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
 import syft as sy
 from syft.federated.federated_client import FederatedClient

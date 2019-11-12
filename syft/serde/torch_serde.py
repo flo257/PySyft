@@ -12,17 +12,9 @@ import numpy
 import torch
 
 import syft
-<<<<<<< HEAD
-
-from syft.workers import AbstractWorker
-
-from syft.frameworks.torch.tensors.interpreters.abstract import initialize_tensor
-from syft.frameworks.torch import pointers
-=======
 from syft.generic.pointers.pointer_tensor import PointerTensor
 from syft.generic.tensor import initialize_tensor
 from syft.workers.abstract import AbstractWorker
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
 
 def _serialize_tensor(tensor) -> bin:

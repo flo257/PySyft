@@ -337,11 +337,7 @@ async def test_train_config_with_jit_trace_async(hook, start_proc):  # pragma: n
     train_config = sy.TrainConfig(
         model=model, loss_fn=loss_fn, batch_size=2, optimizer="SGD", optimizer_args={"lr": 0.1}
     )
-<<<<<<< HEAD
-    train_config.send(local_worker)
-=======
     train_config.send(remote_proxy)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     for epoch in range(5):
         loss = await remote_proxy.async_fit(dataset_key=dataset_key)
@@ -375,13 +371,7 @@ async def test_train_config_with_jit_trace_async(hook, start_proc):  # pragma: n
     torch.__version__ >= "1.1",
     reason="bug in pytorch version 1.1.0, jit.trace returns raw C function",
 )
-<<<<<<< HEAD
-def test_train_config_with_jit_trace_sync(hook, start_proc):  # pragma: no cover
-    kwargs = {"id": "sync_fit", "host": "localhost", "port": 9000, "hook": hook}
-
-=======
 def test_train_config_with_jit_trace_sync(hook, start_remote_worker):  # pragma: no cover
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
     data, target = utils.create_gaussian_mixture_toy_data(100)
     dataset = sy.BaseDataset(data, target)
     dataset_key = "gaussian_mixture"
@@ -442,14 +432,7 @@ def test_train_config_with_jit_trace_sync(hook, start_remote_worker):  # pragma:
         print("Loss before training: {}".format(loss_before))
         print("Loss after training: {}".format(loss_after))
 
-<<<<<<< HEAD
-    local_worker.ws.shutdown()
-    del local_worker
-
-    process_remote_worker.terminate()
-=======
     remote_proxy.close()
     server.terminate()
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     assert loss_after < loss_before

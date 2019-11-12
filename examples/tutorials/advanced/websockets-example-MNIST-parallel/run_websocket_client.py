@@ -111,11 +111,7 @@ async def fit_model_on_worker(
         max_nr_batches=max_nr_batches,
         epochs=1,
         optimizer="SGD",
-<<<<<<< HEAD
-        optimizer_args={"lr": 0.1},
-=======
         optimizer_args={"lr": lr},
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
     )
     train_config.send(worker)
     logger.info("Training round %s, calling fit on worker: %s", curr_round, worker.id)
@@ -129,20 +125,6 @@ def evaluate_model_on_worker(
     model_identifier, worker, dataset_key, model, nr_bins, batch_size, print_target_hist=False
 ):
     model.eval()
-<<<<<<< HEAD
-
-    # Create and send train config
-    train_config = sy.TrainConfig(
-        batch_size=batch_size, model=model, loss_fn=loss_fn, optimizer_args=None, epochs=1
-    )
-
-    train_config.send(worker)
-
-    result = worker.evaluate(
-        dataset_key=dataset_key, return_histograms=True, nr_bins=nr_bins, return_loss=True
-    )
-    test_loss, correct, len_dataset, hist_pred, hist_target = result
-=======
 
     # Create and send train config
     train_config = sy.TrainConfig(
@@ -163,7 +145,6 @@ def evaluate_model_on_worker(
     len_dataset = result["nr_predictions"]
     hist_pred = result["histogram_predictions"]
     hist_target = result["histogram_target"]
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     if print_target_hist:
         logger.info("Target histogram: %s", hist_target)

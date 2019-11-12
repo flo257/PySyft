@@ -226,12 +226,6 @@ def test_torch_mul(workers):
     u = torch.tensor([1.0, -2.0, -3.0])
     x = t.fix_prec()
     y = u.fix_prec().share(bob, alice, crypto_provider=james)
-<<<<<<< HEAD
-
-    z = torch.mul(x, y).get().float_prec()
-
-    assert (z == torch.mul(t, u)).all()
-=======
 
     z = torch.mul(x, y).get().float_prec()
 
@@ -264,7 +258,6 @@ def test_torch_div(workers):
     z = torch.div(x, y).get().float_prec()
 
     assert (z == torch.tensor([[3.0, 4.1], [1.0, 0.0]])).all()
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
 
 def test_torch_pow():

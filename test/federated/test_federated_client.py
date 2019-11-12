@@ -179,11 +179,7 @@ def test_fit(fit_dataset_key, epochs):
 def test_evaluate():  # pragma: no cover
     data, target = utils.iris_data_partial()
 
-<<<<<<< HEAD
-    fed_client = federated.FederatedClient()
-=======
     fed_client = FederatedClient()
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
     dataset = sy.BaseDataset(data, target)
     dataset_key = "iris"
     fed_client.add_dataset(dataset, key=dataset_key)
@@ -216,15 +212,9 @@ def test_evaluate():  # pragma: no cover
 
     model = torch.jit.trace(model_untraced, data)
     model_id = 0
-<<<<<<< HEAD
-    model_ow = pointers.ObjectWrapper(obj=model, id=model_id)
-    loss_id = 1
-    loss_ow = pointers.ObjectWrapper(obj=loss_fn, id=loss_id)
-=======
     model_ow = ObjectWrapper(obj=model, id=model_id)
     loss_id = 1
     loss_ow = ObjectWrapper(obj=loss_fn, id=loss_id)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
     pred = model(data)
     loss_before = loss_fn(target=target, pred=pred)
     if PRINT_IN_UNITTESTS:  # pragma: no cover

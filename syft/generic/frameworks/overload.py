@@ -20,11 +20,7 @@ class Overloaded:
 
         def _hook_method_args(self, *args, **kwargs):
             # Replace all syft tensor with their child attribute
-<<<<<<< HEAD:syft/frameworks/torch/overload_torch.py
-            new_self, new_args, new_kwargs = syft.frameworks.torch.hook_args.unwrap_args_from_method(
-=======
             new_self, new_args, new_kwargs = hook_args.unwrap_args_from_method(
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe:syft/generic/frameworks/overload.py
                 attr.__name__, self, args, kwargs
             )
 
@@ -54,11 +50,7 @@ class Overloaded:
             cls = type(tensor)
 
             # Replace all syft tensor with their child attribute
-<<<<<<< HEAD:syft/frameworks/torch/overload_torch.py
-            new_args, new_kwargs, new_type = syft.frameworks.torch.hook_args.unwrap_args_from_function(
-=======
             new_args, new_kwargs, new_type = hook_args.unwrap_args_from_function(
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe:syft/generic/frameworks/overload.py
                 attr.__name__, args, kwargs
             )
 

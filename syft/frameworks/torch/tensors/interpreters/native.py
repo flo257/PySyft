@@ -1,18 +1,12 @@
-import torch
-import numpy as np
 import math
-
 from typing import List
 from typing import Union
 import warnings
 import weakref
 
-<<<<<<< HEAD
-=======
 import numpy as np
 import torch
 
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 import syft
 from syft.generic.frameworks.hook import hook_args
 from syft.generic.frameworks.overload import overloaded
@@ -24,17 +18,6 @@ from syft.workers.base import BaseWorker
 
 from syft.exceptions import PureFrameworkTensorFoundError
 from syft.exceptions import InvalidTensorForRemoteGet
-<<<<<<< HEAD
-from syft.frameworks.torch.tensors.interpreters import AbstractTensor
-from syft.frameworks.torch.pointers import PointerTensor
-from syft.workers import BaseWorker
-from syft.frameworks.torch.tensors.interpreters.crt_precision import _moduli_for_fields
-
-from syft.exceptions import PureTorchTensorFoundError
-
-from syft.frameworks.torch.overload_torch import overloaded
-=======
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
 
 def _get_maximum_precision():
@@ -300,11 +283,7 @@ class TorchTensor(AbstractTensor):
 
             # Replace all torch tensor with their child attribute
             # Note that we return also args_type which helps handling case 3 in the docstring
-<<<<<<< HEAD
-            new_args, new_kwargs, new_type, args_type = syft.frameworks.torch.hook_args.unwrap_args_from_function(
-=======
             new_args, new_kwargs, new_type, args_type = hook_args.unwrap_args_from_function(
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
                 cmd, args, kwargs, return_args_type=True
             )
             # This handles case 3: it redirects the command to the appropriate class depending
@@ -317,15 +296,8 @@ class TorchTensor(AbstractTensor):
             # Send it to the appropriate class and get the response
             response = new_type.handle_func_command(new_command)
             # Put back the wrappers where needed
-<<<<<<< HEAD
-            response = syft.frameworks.torch.hook_args.hook_response(
-                cmd, response, wrap_type=args_type
-            )
-        except PureTorchTensorFoundError:  # means that it's not a wrapper but a pure tensor
-=======
             response = hook_args.hook_response(cmd, response, wrap_type=args_type)
         except PureFrameworkTensorFoundError:  # means that it's not a wrapper but a pure tensor
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
             # Check that the function has not been overwritten
             try:
@@ -475,15 +447,9 @@ class TorchTensor(AbstractTensor):
             children = list()
             for loc in location:
                 children.append(self.clone().send(loc, no_wrap=True))
-<<<<<<< HEAD
 
             output = syft.MultiPointerTensor(children=children)
 
-=======
-
-            output = syft.MultiPointerTensor(children=children)
-
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
             if not no_wrap:
                 output = output.wrap()
 
@@ -629,12 +595,9 @@ class TorchTensor(AbstractTensor):
 
     def move(self, location):
         self.child = self.child.move(location)
-<<<<<<< HEAD
-=======
         # We get the owner from self.child because the owner of a wrapper is
         # not reliable and sometimes end up being the syft.local_worker
         self.child.owner.register_obj(self)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
         return self
 
     def attr(self, attr_name):
@@ -677,13 +640,10 @@ class TorchTensor(AbstractTensor):
     float_precision_ = float_prec_
 
     def fix_prec(self, *args, storage="auto", field_type="int100", **kwargs):
-<<<<<<< HEAD
-=======
 
         if not kwargs.get("owner"):
             kwargs["owner"] = self.owner
 
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
         if self.is_wrapper:
             self.child = self.child.fix_prec(*args, **kwargs)
             return self
@@ -724,16 +684,12 @@ class TorchTensor(AbstractTensor):
             )
         else:
             assert not need_large_prec, "This tensor needs large precision to be correctly stored"
-<<<<<<< HEAD
-            return syft.FixedPrecisionTensor(*args, **kwargs).on(self).enc_fix_prec().wrap()
-=======
             if "internal_type" in kwargs:
                 warnings.warn(
                     "do not provide internal_type if data does not need LargePrecisionTensor to be stored"
                 )
                 del kwargs["internal_type"]
             return syft.FixedPrecisionTensor(*args, **kwargs).on(self).enc_fix_prec()
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     fix_precision = fix_prec
 
@@ -772,11 +728,6 @@ class TorchTensor(AbstractTensor):
         """
 
         if self.has_child():
-<<<<<<< HEAD
-            self.child = self.child.share(*owners, field=field, crypto_provider=crypto_provider)
-            if no_wrap:
-                return self.child
-=======
             chain = self.child.copy()
             chain.owner = self.child.owner
 
@@ -786,7 +737,6 @@ class TorchTensor(AbstractTensor):
             shared_tensor = chain.share(
                 *owners, field=field, crypto_provider=crypto_provider, **kwargs
             )
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
         else:
             shared_tensor = (
                 syft.AdditiveSharingTensor(
@@ -795,8 +745,6 @@ class TorchTensor(AbstractTensor):
                 .on(self.copy())
                 .child.init_shares(*owners)
             )
-            if not no_wrap:
-                shared_tensor = shared_tensor.wrap()
 
         if not no_wrap:
             shared_tensor = shared_tensor.wrap()

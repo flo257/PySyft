@@ -15,8 +15,6 @@ def test_object_registration(hook):
     x = th.tensor([1, 2, 3])
     assert x.id in me._objects
 
-<<<<<<< HEAD
-=======
     me.is_client_worker = True
 
 
@@ -64,7 +62,6 @@ def test_shared_tensor_registration_pointer(workers, hook):
 
     me.is_client_worker = True
 
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
 def test_in_known_workers(hook):
     # Get local worker

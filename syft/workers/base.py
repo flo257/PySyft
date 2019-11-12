@@ -31,20 +31,8 @@ from syft.workers.abstract import AbstractWorker
 from syft.exceptions import GetNotPermittedError
 from syft.exceptions import WorkerNotFoundException
 from syft.exceptions import ResponseSignatureError
-<<<<<<< HEAD
-from syft.workers import AbstractWorker
-from syft import messaging
-from syft import codes
-from typing import Callable
-from typing import List
-from typing import Tuple
-from typing import Union
-from typing import TYPE_CHECKING
-import torch
-=======
 from syft.exceptions import PlanCommandUnknownError
 
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
 # this if statement avoids circular imports between base.py and pointer.py
 if TYPE_CHECKING:
@@ -261,14 +249,7 @@ class BaseWorker(AbstractWorker, ObjectStorage):
             location.
         """
         if self.verbose:
-<<<<<<< HEAD
-            print(f"worker {self} sending {msg_type} {message} to {location}")
-
-        # Step 0: combine type and message
-        message = messaging.Message(msg_type, message)
-=======
             print(f"worker {self} sending {message} to {location}")
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
         # Step 1: serialize the message to a binary
         bin_message = sy.serde.serialize(message)
@@ -323,16 +304,9 @@ class BaseWorker(AbstractWorker, ObjectStorage):
         obj: Union[FrameworkTensorType, AbstractTensor],
         workers: "BaseWorker",
         ptr_id: Union[str, int] = None,
-<<<<<<< HEAD
-        local_autograd=False,
-        preinitialize_grad=False,
-        garbage_collect_data=None,
-    ) -> "pointers.ObjectPointer":
-=======
         garbage_collect_data=None,
         **kwargs,
     ) -> ObjectPointer:
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
         """Sends tensor to the worker(s).
 
         Send a syft or torch tensor/object and its child, sub-child, etc (all the
@@ -394,14 +368,8 @@ class BaseWorker(AbstractWorker, ObjectStorage):
                 id_at_location=obj.id,
                 register=True,
                 ptr_id=ptr_id,
-<<<<<<< HEAD
-                local_autograd=local_autograd,
-                preinitialize_grad=preinitialize_grad,
-                garbage_collect_data=garbage_collect_data,
-=======
                 garbage_collect_data=garbage_collect_data,
                 **kwargs,
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
             )
         else:
             pointer = obj
@@ -429,11 +397,7 @@ class BaseWorker(AbstractWorker, ObjectStorage):
         # Handle methods
         if _self is not None:
             if type(_self) == int:
-<<<<<<< HEAD
-                _self = self.get_obj(_self)
-=======
                 _self = BaseWorker.get_obj(self, _self)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
                 if _self is None:
                     return
             if type(_self) == str and _self == "self":
@@ -518,11 +482,6 @@ class BaseWorker(AbstractWorker, ObjectStorage):
         """
         if return_ids is None:
             return_ids = tuple([sy.ID_PROVIDER.pop()])
-<<<<<<< HEAD
-
-        message = (message, return_ids)
-=======
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
         try:
             ret_val = self.send_msg(Operation(message, return_ids), location=recipient)
@@ -785,11 +744,7 @@ class BaseWorker(AbstractWorker, ObjectStorage):
         return self.__str__()
 
     def __getitem__(self, idx):
-<<<<<<< HEAD
-        return self._objects[idx]
-=======
         return self._objects.get(idx, None)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     @staticmethod
     def is_tensor_none(obj):
@@ -1019,11 +974,6 @@ class BaseWorker(AbstractWorker, ObjectStorage):
         """
         if return_ids is None:
             return_ids = []
-<<<<<<< HEAD
-        return messaging.Message(
-            codes.MSGTYPE.CMD, [[command_name, command_owner, args, kwargs], return_ids]
-        )
-=======
         return Message(codes.MSGTYPE.CMD, [[command_name, command_owner, args, kwargs], return_ids])
 
     @staticmethod
@@ -1066,4 +1016,3 @@ class BaseWorker(AbstractWorker, ObjectStorage):
                 del worker._objects[obj.id]
 
         return result
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe

@@ -72,20 +72,10 @@ class LargePrecisionTensor(AbstractTensor):
         """Decompose a tensor into an array of numbers that represent such tensor with the required precision"""
         self_scaled = self.child.numpy() * self.base ** self.precision_fractional
 
-<<<<<<< HEAD
-        assert np.all(
-            np.abs(self_scaled) < (self.field / 2)
-        ), f"{self} cannot be correctly embedded: choose bigger field or a lower precision"
-
-        # floor is applied otherwise, long float is not accurate
-        self_scaled = np.vectorize(math.floor)(self_scaled)
-        self_scaled %= self.field
-=======
         # floor is applied otherwise, long float is not accurate
         self_scaled = np.vectorize(math.floor)(self_scaled)
         # https://github.com/numpy/numpy/issues/6464
         self_scaled = np.remainder(self_scaled, np.array(self.field), casting="unsafe")
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
         # self_scaled can be an array of floats. As multiplying an array of int with an int
         # still gives an array of int, I think it should be because self.child is a float tensor at this point.
@@ -152,11 +142,7 @@ class LargePrecisionTensor(AbstractTensor):
     def mul(self, self_, other):
         if isinstance(other, int):
             return self_ * other
-<<<<<<< HEAD
-        else:
-=======
         elif isinstance(self_, np.ndarray) and isinstance(other, np.ndarray):
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
             res = (self_ * other) % self.field
 
             # We need to truncate the result
@@ -167,11 +153,8 @@ class LargePrecisionTensor(AbstractTensor):
             trunc_res = np.where(gate, neg_nums, pos_nums)
 
             return trunc_res
-<<<<<<< HEAD
-=======
         else:
             raise NotImplementedError
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     __mul__ = mul
 
@@ -228,11 +211,7 @@ class LargePrecisionTensor(AbstractTensor):
         """
         # This method is called to rebuild an LTP after operations.
         # The wrapping is done here and not in each operation.
-<<<<<<< HEAD
-        ndarray %= kwargs.get("field", 2 ** 512)
-=======
         ndarray %= kwargs.get("field", 2 ** 62)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
         internal_type = kwargs["internal_type"]
         internal_precision = type_precision[internal_type] - 1

@@ -5,13 +5,6 @@ import pytest
 import torch
 
 import syft as sy
-<<<<<<< HEAD
-from syft.exceptions import GetNotPermittedError
-from syft.workers.virtual import VirtualWorker
-from syft.codes import MSGTYPE
-from syft import messaging
-=======
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 from syft import serde
 from syft.generic.pointers.object_wrapper import ObjectWrapper
 from syft.messaging.message import ObjectMessage
@@ -88,11 +81,7 @@ def test_recv_msg():
     obj = torch.Tensor([100, 100])
 
     # create/serialize message
-<<<<<<< HEAD
-    message = messaging.Message(MSGTYPE.OBJ, obj)
-=======
     message = ObjectMessage(obj)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
     bin_msg = serde.serialize(message)
 
     # have alice receive message
@@ -104,11 +93,7 @@ def test_recv_msg():
     # Test 2: get tensor back from alice
 
     # Create message: Get tensor from alice
-<<<<<<< HEAD
-    message = messaging.Message(MSGTYPE.OBJ_REQ, obj.id)
-=======
     message = ObjectRequestMessage(obj.id)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     # serialize message
     bin_msg = serde.serialize(message)

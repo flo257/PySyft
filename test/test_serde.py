@@ -581,13 +581,8 @@ def test_additive_sharing_tensor_serde(compress, workers):
     x = torch.tensor([[3.1, 4.3]]).fix_prec().share(alice, bob, crypto_provider=james)
 
     additive_sharing_tensor = x.child.child
-<<<<<<< HEAD
-    data = syft.AdditiveSharingTensor.simplify(additive_sharing_tensor)
-    additive_sharing_tensor_reconstructed = syft.AdditiveSharingTensor.detail(
-=======
     data = AdditiveSharingTensor.simplify(additive_sharing_tensor)
     additive_sharing_tensor_reconstructed = AdditiveSharingTensor.detail(
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
         syft.hook.local_worker, data
     )
 

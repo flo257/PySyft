@@ -41,14 +41,7 @@ def _simplify_collection(my_collection: Collection) -> Tuple:
     for part in my_collection:
         pieces.append(serde._simplify(part))
 
-<<<<<<< HEAD
-    # Step 2: convert back to original type and return serialization
-    if my_type == set:
-        return pieces
-
-=======
     # Step 2: return serialization as tuple of simplified items
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
     return tuple(pieces)
 
 

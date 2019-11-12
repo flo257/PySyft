@@ -268,11 +268,7 @@ get response and “rebuild” the syft tensor wrapper upon all tensors found
 ## syft.generic.frameworks.hook.hook_args module
 
 
-<<<<<<< HEAD
-#### syft.frameworks.torch.hook_args.build_unwrap_args_with_rules(args, rules, return_tuple=False)
-=======
 #### syft.generic.frameworks.hook.hook_args.build_unwrap_args_with_rules(args, rules, return_tuple=False)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 Build a function given some rules to efficiently replace in the args object
 syft tensors with their child (but not pointer as they don’t have .child),
 and do nothing for other type of object including torch tensors, str,
@@ -350,20 +346,12 @@ rules = (0, [1, (0, 0), 0)
   return the first (and here unique) function
 
 
-<<<<<<< HEAD
-#### syft.frameworks.torch.hook_args.build_unwrap_args_from_function(args, return_tuple=False)
-=======
 #### syft.generic.frameworks.hook.hook_args.build_unwrap_args_from_function(args, return_tuple=False)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 Build the function f that hook the arguments:
 f(args) = new_args
 
 
-<<<<<<< HEAD
-#### syft.frameworks.torch.hook_args.build_wrap_reponse_from_function(response, wrap_type, wrap_args)
-=======
 #### syft.generic.frameworks.hook.hook_args.build_wrap_reponse_from_function(response, wrap_type, wrap_args)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 Build the function that hook the response.
 
 ### Example
@@ -405,11 +393,7 @@ f is the register_response_function
 then f(p) = (1, (Wrapper)>Pointer)
 
 
-<<<<<<< HEAD
-#### syft.frameworks.torch.hook_args.build_response_hook_with_rule(response, rules, wrap_type, wrap_args, return_tuple=False)
-=======
 #### syft.generic.frameworks.hook.hook_args.build_response_hook_with_rule(response, rules, wrap_type, wrap_args, return_tuple=False)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 Build a function given some rules to efficiently replace in the response object
 syft or torch tensors with a wrapper, and do nothing for other types of object
 including , str, numbers, bool, etc.
@@ -450,11 +434,7 @@ out: ([1, 1], 0)
 
 #### syft.generic.frameworks.hook.hook_args.four_layers(idx1, \*ids)
 
-<<<<<<< HEAD
-#### syft.frameworks.torch.hook_args.unwrap_args_from_function(attr, args, kwargs, return_args_type=False)
-=======
 #### syft.generic.frameworks.hook.hook_args.unwrap_args_from_function(attr, args, kwargs, return_args_type=False)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 See unwrap_args_from_method for details
 
 
@@ -484,11 +464,7 @@ See unwrap_args_from_method for details
 
 
 
-<<<<<<< HEAD
-#### syft.frameworks.torch.hook_args.unwrap_args_from_method(attr, method_self, args, kwargs)
-=======
 #### syft.generic.frameworks.hook.hook_args.unwrap_args_from_method(attr, method_self, args, kwargs)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 Method arguments are sometimes simple types (such as strings or ints) but
 sometimes they are custom Syft tensors such as wrappers (torch.Tensor) or LoggingTensor
 or some other tensor type. Complex types (which have a .child attribute) need to

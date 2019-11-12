@@ -6,10 +6,7 @@ from OpenSSL import crypto, SSL
 import pytest
 import torch
 import syft as sy
-<<<<<<< HEAD
-=======
 from syft.generic.frameworks.hook import hook_args
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 from syft.frameworks.torch.federated import utils
 
 from syft.workers.websocket_client import WebsocketClientWorker
@@ -19,28 +16,6 @@ from test.conftest import instantiate_websocket_client_worker
 
 
 PRINT_IN_UNITTESTS = False
-
-PRINT_IN_UNITTESTS = False
-
-
-def instantiate_websocket_client_worker(**kwargs):  # pragma: no cover
-    """ Helper function to instantiate the websocket client.
-    If connection is refused, we wait a bit and try again.
-    After 5 failed tries, a ConnectionRefusedError is raised.
-    """
-    retry_counter = 0
-    connection_open = False
-    while not connection_open:
-        try:
-            local_worker = WebsocketClientWorker(**kwargs)
-            connection_open = True
-        except ConnectionRefusedError as e:
-            if retry_counter < 5:
-                retry_counter += 1
-                time.sleep(0.1)
-            else:
-                raise e
-    return local_worker
 
 
 @pytest.mark.parametrize("secure", [True, False])
@@ -90,11 +65,7 @@ def test_websocket_worker_basic(hook, start_proc, secure, tmpdir):
         del kwargs["key_path"]
 
     kwargs["secure"] = secure
-<<<<<<< HEAD
-    local_worker = instantiate_websocket_client_worker(**kwargs)
-=======
     remote_proxy = instantiate_websocket_client_worker(**kwargs)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     x = x.send(remote_proxy)
     y = x + x
@@ -114,20 +85,11 @@ def test_websocket_workers_search(hook, start_remote_worker):
     """Evaluates that a client can search and find tensors that belong
     to another party"""
     # Args for initializing the websocket server and client
-<<<<<<< HEAD
-    base_kwargs = {"id": "fed2", "host": "localhost", "port": 8767, "hook": hook}
-    server_kwargs = base_kwargs
-    server_kwargs["data"] = [sample_data]
-    process_remote_worker = start_proc(WebsocketServerWorker, **server_kwargs)
-
-    local_worker = instantiate_websocket_client_worker(**base_kwargs)
-=======
     server, remote_proxy = start_remote_worker(id="fed2", hook=hook, port=8767)
 
     # Sample tensor to store on the server
     sample_data = torch.tensor([1, 2, 3, 4]).tag("#sample_data", "#another_tag")
     _ = sample_data.send(remote_proxy)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     # Search for the tensor located on the server by using its tag
     results = remote_proxy.search(["#sample_data", "#another_tag"])
@@ -143,11 +105,7 @@ def test_websocket_workers_search(hook, start_remote_worker):
     assert results[0].owner.id == "me"
     assert results[0].location.id == "fed2"
 
-<<<<<<< HEAD
-    local_worker.close()
-=======
     remote_proxy.close()
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
     time.sleep(0.1)
     remote_proxy.remove_worker_from_local_worker_registry()
     server.terminate()
@@ -157,15 +115,9 @@ def test_list_objects_remote(hook, start_remote_worker):
     server, remote_proxy = start_remote_worker(id="fed-list-objects", hook=hook, port=8765)
     remote_proxy.clear_objects()
 
-<<<<<<< HEAD
-    kwargs = {"id": "fed", "host": "localhost", "port": 8765, "hook": hook}
-    process_remote_fed1 = start_proc(WebsocketServerWorker, **kwargs)
-    local_worker = instantiate_websocket_client_worker(**kwargs)
-=======
     x = torch.tensor([1, 2, 3]).send(remote_proxy)
 
     res = remote_proxy.list_objects_remote()
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     x = torch.tensor([1, 2, 3]).send(remote_proxy)
 
@@ -178,14 +130,6 @@ def test_list_objects_remote(hook, start_remote_worker):
     res_dict = eval(res.replace("tensor", "torch.tensor"))
     assert len(res_dict) == 2
 
-<<<<<<< HEAD
-    # retrieve x and y before terminating the websocket connection
-    x.get()
-    y.get()
-    local_worker.close()
-    local_worker.remove_worker_from_local_worker_registry()
-    process_remote_fed1.terminate()
-=======
     # delete x before terminating the websocket connection
     del x
     del y
@@ -194,26 +138,15 @@ def test_list_objects_remote(hook, start_remote_worker):
     time.sleep(0.1)
     remote_proxy.remove_worker_from_local_worker_registry()
     server.terminate()
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
 
 def test_objects_count_remote(hook, start_remote_worker):
     server, remote_proxy = start_remote_worker(id="fed-count-objects", hook=hook, port=8764)
     remote_proxy.clear_objects()
 
-<<<<<<< HEAD
-    kwargs = {"id": "fed", "host": "localhost", "port": 8764, "hook": hook}
-    process_remote_worker = start_proc(WebsocketServerWorker, **kwargs)
-    local_worker = instantiate_websocket_client_worker(**kwargs)
-
-    x = torch.tensor([1, 2, 3]).send(local_worker)
-
-    nr_objects = local_worker.objects_count_remote()
-=======
     x = torch.tensor([1, 2, 3]).send(remote_proxy)
 
     nr_objects = remote_proxy.objects_count_remote()
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
     assert nr_objects == 1
 
     y = torch.tensor([4, 5, 6]).send(remote_proxy)
@@ -224,39 +157,6 @@ def test_objects_count_remote(hook, start_remote_worker):
     nr_objects = remote_proxy.objects_count_remote()
     assert nr_objects == 1
 
-<<<<<<< HEAD
-    # get remote object before terminating the websocket connection
-    y.get()
-    local_worker.close()
-    local_worker.remove_worker_from_local_worker_registry()
-    process_remote_worker.terminate()
-
-
-def test_clear_objects_remote(hook, start_proc):
-    kwargs = {"id": "fed", "host": "localhost", "port": 8769, "hook": hook}
-    process_remote_worker = start_proc(WebsocketServerWorker, **kwargs)
-    local_worker = instantiate_websocket_client_worker(**kwargs)
-
-    x = torch.tensor([1, 2, 3]).send(local_worker, garbage_collect_data=False)
-    y = torch.tensor(4).send(local_worker, garbage_collect_data=False)
-
-    nr_objects = local_worker.objects_count_remote()
-    assert nr_objects == 2
-
-    local_worker.clear_objects_remote()
-    nr_objects = local_worker.objects_count_remote()
-    assert nr_objects == 0
-
-    local_worker.close()
-    local_worker.remove_worker_from_local_worker_registry()
-    process_remote_worker.terminate()
-
-
-def test_connect_close(hook, start_proc):
-    kwargs = {"id": "fed", "host": "localhost", "port": 8765, "hook": hook}
-    process_remote_worker = start_proc(WebsocketServerWorker, **kwargs)
-    local_worker = instantiate_websocket_client_worker(**kwargs)
-=======
     # delete remote object before terminating the websocket connection
     del y
     time.sleep(0.1)
@@ -286,7 +186,6 @@ def test_clear_objects_remote(hook, start_remote_worker):
 
 def test_connect_close(hook, start_remote_worker):
     server, remote_proxy = start_remote_worker(id="fed-connect-close", hook=hook, port=8771)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     x = torch.tensor([1, 2, 3])
     x_ptr = x.send(remote_proxy)
@@ -304,14 +203,8 @@ def test_connect_close(hook, start_remote_worker):
     x_val = x_ptr.get()
     assert (x_val == x).all()
 
-<<<<<<< HEAD
-    local_worker.close()
-    local_worker.remove_worker_from_local_worker_registry()
-    local_worker.close()
-=======
     remote_proxy.close()
     remote_proxy.remove_worker_from_local_worker_registry()
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     time.sleep(0.1)
 
@@ -320,23 +213,12 @@ def test_connect_close(hook, start_remote_worker):
 
 def test_websocket_worker_multiple_output_response(hook, start_remote_worker):
     """Evaluates that you can do basic tensor operations using
-<<<<<<< HEAD
-    WebsocketServerWorker"""
-
-    kwargs = {"id": "socket_multiple_output", "host": "localhost", "port": 8768, "hook": hook}
-    process_remote_worker = start_proc(WebsocketServerWorker, **kwargs)
-    local_worker = instantiate_websocket_client_worker(**kwargs)
-
-    x = torch.tensor([1.0, 3, 2])
-    x = x.send(local_worker)
-=======
     WebsocketServerWorker."""
     server, remote_proxy = start_remote_worker(id="socket_multiple_output", hook=hook, port=8768)
 
     x = torch.tensor([1.0, 3, 2])
     x = x.send(remote_proxy)
 
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
     p1, p2 = torch.sort(x)
     x1, x2 = p1.get(), p2.get()
 
@@ -345,14 +227,8 @@ def test_websocket_worker_multiple_output_response(hook, start_remote_worker):
 
     x.get()  # retrieve remote object before closing the websocket connection
 
-<<<<<<< HEAD
-    local_worker.close()
-    local_worker.remove_worker_from_local_worker_registry()
-    process_remote_worker.terminate()
-=======
     remote_proxy.close()
     server.terminate()
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
 
 @pytest.mark.skipif(
@@ -362,36 +238,21 @@ def test_websocket_worker_multiple_output_response(hook, start_remote_worker):
 def test_evaluate(hook, start_proc):  # pragma: no cover
 
     sy.local_worker.clear_objects()
-<<<<<<< HEAD
-    sy.frameworks.torch.hook.hook_args.hook_method_args_functions = {}
-    sy.frameworks.torch.hook.hook_args.hook_method_response_functions = {}
-    sy.frameworks.torch.hook.hook_args.get_tensor_type_functions = {}
-    sy.frameworks.torch.hook.hook_args.register_response_functions = {}
-=======
     sy.generic.frameworks.hook.hook_args.hook_method_args_functions = {}
     sy.generic.frameworks.hook.hook_args.hook_method_response_functions = {}
     sy.generic.frameworks.hook.hook_args.get_tensor_type_functions = {}
     sy.generic.frameworks.hook.hook_args.register_response_functions = {}
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     data, target = utils.iris_data_partial()
 
     dataset = sy.BaseDataset(data=data, targets=target)
 
-<<<<<<< HEAD
-    kwargs = {"id": "evaluate_remote", "host": "localhost", "port": 8780, "hook": hook}
-=======
     kwargs = {"id": "evaluate_remote", "host": "localhost", "port": 8790, "hook": hook}
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
     dataset_key = "iris"
     # TODO: check why unit test sometimes fails when WebsocketServerWorker is started from the unit test. Fails when run after test_federated_client.py
     # process_remote_worker = start_proc(WebsocketServerWorker, dataset=(dataset, dataset_key), verbose=True, **kwargs)
 
-<<<<<<< HEAD
-    local_worker = instantiate_websocket_client_worker(**kwargs)
-=======
     remote_proxy = instantiate_websocket_client_worker(**kwargs)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     def loss_fn(pred, target):
         return torch.nn.functional.cross_entropy(input=pred, target=target)
@@ -426,15 +287,6 @@ def test_evaluate(hook, start_proc):  # pragma: no cover
         optimizer_args=None,
         epochs=1,
     )
-<<<<<<< HEAD
-    train_config.send(local_worker)
-
-    result = local_worker.evaluate(
-        dataset_key=dataset_key, calculate_histograms=True, nr_bins=3, calculate_loss=True
-    )
-
-    test_loss_before, correct_before, len_dataset, hist_pred_before, hist_target = result
-=======
     train_config.send(remote_proxy)
 
     result = remote_proxy.evaluate(
@@ -443,7 +295,6 @@ def test_evaluate(hook, start_proc):  # pragma: no cover
 
     len_dataset = result["nr_predictions"]
     hist_target = result["histogram_target"]
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
     if PRINT_IN_UNITTESTS:  # pragma: no cover
         print("Evaluation result before training: {}".format(result))
@@ -451,11 +302,6 @@ def test_evaluate(hook, start_proc):  # pragma: no cover
     assert len_dataset == 30
     assert (hist_target == [10, 10, 10]).all()
 
-<<<<<<< HEAD
-    local_worker.close()
-    local_worker.remove_worker_from_local_worker_registry()
-=======
     remote_proxy.close()
     remote_proxy.remove_worker_from_local_worker_registry()
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
     # process_remote_worker.terminate()

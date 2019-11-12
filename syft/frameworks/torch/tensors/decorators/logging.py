@@ -41,11 +41,7 @@ class LoggingTensor(AbstractTensor):
         some particular behaviour: so here what to start from :)
         """
         # Replace all syft tensor with their child attribute
-<<<<<<< HEAD
-        new_self, new_args, new_kwargs = syft.frameworks.torch.hook_args.unwrap_args_from_method(
-=======
         new_self, new_args, new_kwargs = hook_args.unwrap_args_from_method(
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
             "add", self, args, kwargs
         )
 

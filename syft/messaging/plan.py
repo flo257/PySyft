@@ -36,11 +36,6 @@ class func2plan(object):
     This class should be used only as decorator.
     """
 
-<<<<<<< HEAD:syft/messaging/plan.py
-    def __init__(self, args_shape=None, verbose=False):
-        self.args_shape = args_shape
-        self.verbose = verbose
-=======
     def __init__(self, args_shape=None, state=None, verbose=False):
         self.args_shape = args_shape
         self.verbose = verbose
@@ -50,7 +45,6 @@ class func2plan(object):
         else:
             self.state = {}
             self.include_state = False
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe:syft/messaging/plan.py
 
     def __call__(self, plan_blueprint):
         plan = Plan(
@@ -58,11 +52,8 @@ class func2plan(object):
             id=sy.ID_PROVIDER.pop(),
             name=plan_blueprint.__name__,
             blueprint=plan_blueprint,
-<<<<<<< HEAD:syft/messaging/plan.py
-=======
             state=self.state,
             include_state=self.include_state,
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe:syft/messaging/plan.py
             verbose=self.verbose,
         )
         if self.args_shape:
@@ -248,15 +239,9 @@ class Plan(ObjectStorage, torch.nn.Module):
         torch.nn.Module.__init__(self)
 
         # Plan instance info
-<<<<<<< HEAD:syft/messaging/plan.py
-        self.id = id
-        self.name = name
-        self.owner = owner
-=======
         self.id = sy.ID_PROVIDER.pop() if id is None else id
         self.name = self.__class__.__name__ if name == "" else name
         self._owner = sy.local_worker if owner is None else owner
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe:syft/messaging/plan.py
         self.verbose = verbose
 
         # Info about the plan stored
@@ -351,14 +336,10 @@ class Plan(ObjectStorage, torch.nn.Module):
         if self.verbose:
             print(f"worker {self} received {sy.codes.code2MSGTYPE[msg_type]} {contents}")
 
-<<<<<<< HEAD:syft/messaging/plan.py
-        if msg_type != MSGTYPE.OBJ:
-=======
         if (
             msg_type not in (MSGTYPE.OBJ, MSGTYPE.OBJ_DEL, MSGTYPE.FORCE_OBJ_DEL)
             and not self.is_built
         ):
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe:syft/messaging/plan.py
             self.plan.append(bin_message)
             self.readable_plan.append((some_type, (msg_type, contents)))
 
@@ -382,17 +363,7 @@ class Plan(ObjectStorage, torch.nn.Module):
         Args:
             args: Input data.
         """
-<<<<<<< HEAD:syft/messaging/plan.py
-        self._prepare_for_running_local_method()
-        self._build(list(args))
-        self._after_running_local_method()
-
-    def _build(self, args: List):
-        if self.is_method:
-            args = tuple([self._self] + args)
-=======
         args = list(args)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe:syft/messaging/plan.py
 
         # Move the arguments of the first call to the plan and store their ids
         # as they will be included in the readable_plan: it should be updated

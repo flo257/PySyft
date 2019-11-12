@@ -134,11 +134,7 @@ class AutogradTensor(AbstractTensor):
         if grad_fn is not None:
 
             def method_with_grad(*args, **kwargs):
-<<<<<<< HEAD
-                new_self, new_args, new_kwargs = syft.frameworks.torch.hook_args.unwrap_args_from_method(
-=======
                 new_self, new_args, new_kwargs = hook_args.unwrap_args_from_method(
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
                     name, self, args, kwargs
                 )
 
@@ -243,13 +239,7 @@ class AutogradTensor(AbstractTensor):
             pass
 
         # Replace all AutogradTensor with their child attribute
-<<<<<<< HEAD
-        new_args, new_kwargs, new_type = syft.frameworks.torch.hook_args.unwrap_args_from_function(
-            cmd, args, kwargs
-        )
-=======
         new_args, new_kwargs, new_type = hook_args.unwrap_args_from_function(cmd, args, kwargs)
->>>>>>> a8ab8d67ff49de7ebdbff318a08c08bdce9ba1fe
 
         # build the new command
         new_command = (cmd, None, new_args, new_kwargs)
