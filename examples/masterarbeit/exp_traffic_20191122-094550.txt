@@ -1,0 +1,14 @@
+#dataset: trafficsign
+#way backdoor looks like: green_squares
+#merge strategy: sequential
+#number of benign sources: 4
+#number of malicious sources: 1
+#batch size: 64
+#distribution of data: equally distributed subset
+#percentage of poisoned data in backdoored nodes: NONE
+#order of time backdoors being inserted: NONE
+#attack model: basic
+#starttime: 094550
+training_type;epoch_number;learn_rate;avg_training_loss;avg_test_loss;test_accuracy;timestamp
+backdoor;1;0.01;0.25005900859832764;0.009500147616945656;100.0;094941
+normal;1;0.01;2.0348434448242188;11.189799200929029;5.4676658340271995;094856
