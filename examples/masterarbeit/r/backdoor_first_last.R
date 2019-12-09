@@ -50,3 +50,23 @@ legend("bottomright",
                 "malicious test data (backdoors trained last)"),
        col=c("red", "red", "blue", "blue"), 
        lty=c(1,2,1,2), cex=0.6)
+
+"Epoch number ~ Test accuracy"
+plot(backdoor_100_last$avg_training_loss[backdoor_100_last$training_type == "normal"] ~ 
+       backdoor_100_last$epoch_number[backdoor_100_last$training_type == "normal"], 
+     type = "l", 
+     col = "red", 
+     xlab = "Epoch number", 
+     ylab = "Avg. train loss",
+     main = "Average train loss\nwith 20% malicious clients")
+
+lines(backdoor_100_last$avg_training_loss[backdoor_100_last$training_type == "backdoor"] ~ 
+        backdoor_100_last$epoch_number[backdoor_100_last$training_type == "backdoor"], 
+      type = "l", 
+      col = "blue")
+
+legend("topright", 
+       legend=c("benign data train loss", 
+                "malicious data train loss"),
+       col=c("red", "blue"), 
+       lty=c(1,1), cex=0.8)
