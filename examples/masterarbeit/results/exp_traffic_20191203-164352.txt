@@ -6,9 +6,9 @@
 #number of malicious sources: 1
 #batch size: 64
 #distribution of data: equally distributed subset
-#percentage of poisoned data in backdoored nodes: no
+#percentage of poisoned data in backdoored nodes: 0.25
 #order of time backdoors being inserted: no
-#attack model: no
+#attack model: basic
 #starttime: 164352
 training_type;epoch_number;learn_rate;avg_training_loss;avg_test_loss;test_accuracy;timestamp
 normal;1;0.01;2.7711;2.1390096371682725;30.03053011379406;164650
