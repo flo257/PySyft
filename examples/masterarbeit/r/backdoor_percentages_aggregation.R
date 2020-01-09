@@ -21,7 +21,7 @@ plot(backdoor_100$test_accuracy[backdoor_100$training_type == "normal"] ~
      col = "red", 
      xlab = "Epoch number", 
      ylab = "Test accuracy",
-     xlim = c(0, 43),
+     xlim = c(0, 50),
      main = "Benign testset performance\nwith p% malicious data in backdoored clients")
 
 lines(backdoor_50$test_accuracy[backdoor_50$training_type == "normal"] ~ 
@@ -49,7 +49,7 @@ plot(backdoor_100$test_accuracy[backdoor_100$training_type == "backdoor"] ~
      col = "red", 
      xlab = "Epoch number", 
      ylab = "Test accuracy",
-     xlim = c(0, 43),
+     xlim = c(0, 100),
      main = "Backdoored testset performance\nwith p% malicious data in backdoored clients")
 
 lines(backdoor_50$test_accuracy[backdoor_50$training_type == "backdoor"] ~ 
@@ -62,7 +62,7 @@ lines(backdoor_25$test_accuracy[backdoor_25$training_type == "backdoor"] ~
       type = "l", 
       col = "green")
 
-legend("bottomright", 
+legend("topleft", 
        legend=c("malicious clients at p=100%", 
                 "malicious clients at p=50%",
                 "malicious clients at p=25%"),
@@ -77,7 +77,7 @@ plot(backdoor_100$avg_test_loss[backdoor_100$training_type == "backdoor"] ~
      xlab = "Epoch number", 
      ylab = "Average testset loss",
      ylim = c(0,15),
-     xlim = c(0, 45),
+     xlim = c(0, 100),
      main = "Average testset loss\nat p% malicious data in backdoored clients")
 
 lines(backdoor_100$avg_test_loss[backdoor_100$training_type == "normal"] ~ 
