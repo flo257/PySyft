@@ -1,0 +1,3617 @@
+#dataset: trafficsign
+#way backdoor looks like: green_squares
+#merge strategy: aggregation
+#learning rate: 0.0001
+#number of benign sources: 5
+#number of malicious sources: 0
+#batch size: 64
+#distribution of data: 20% classes on 20% data on 20% clients exclusively
+#percentage of poisoned data in backdoored nodes: 1
+#order of time backdoors being inserted: no
+#model replacement: False
+#starttime: 125252
+training_type;epoch_number;learn_rate;avg_training_loss;avg_test_loss;test_accuracy;timestamp
+
+Epoch 1
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 2.1864, Accuracy: 1082/3603 (30%)
+
+tensor([0., 0., 1., 0., 0., 0., 0., 0., 0., 0.])
+Epoch 2
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 2.1943, Accuracy: 1082/3603 (30%)
+
+tensor([0., 0., 1., 0., 0., 0., 0., 0., 0., 0.])
+Epoch 3
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 2.3452, Accuracy: 1082/3603 (30%)
+
+tensor([0., 0., 1., 0., 0., 0., 0., 0., 0., 0.])
+Epoch 4
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 2.1263, Accuracy: 1467/3603 (41%)
+
+tensor([0.1066, 0.0000, 0.9824, 0.0000, 0.8626, 0.0000, 0.0000, 0.0000, 0.0000,
+        0.0000])
+Epoch 5
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 1.7955, Accuracy: 2151/3603 (60%)
+
+tensor([0.6345, 0.0000, 0.9445, 0.0000, 0.8784, 0.0000, 0.1250, 0.0000, 0.0571,
+        0.9199])
+Epoch 6
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 1.5252, Accuracy: 2258/3603 (63%)
+
+tensor([0.7005, 0.0000, 0.9353, 0.0000, 0.9032, 0.0000, 0.7750, 0.0000, 0.0857,
+        0.9414])
+Epoch 7
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 1.3960, Accuracy: 2331/3603 (65%)
+
+tensor([0.9188, 0.0000, 0.9335, 0.0000, 0.9099, 0.0366, 0.8750, 0.0114, 0.0857,
+        0.9584])
+Epoch 8
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 1.3834, Accuracy: 2369/3603 (66%)
+
+tensor([0.9543, 0.0000, 0.9418, 0.0000, 0.9077, 0.0732, 0.9333, 0.0417, 0.1143,
+        0.9646])
+Epoch 9
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 1.2715, Accuracy: 2401/3603 (67%)
+
+tensor([0.9746, 0.0000, 0.9445, 0.0000, 0.9077, 0.1098, 0.9417, 0.1023, 0.2286,
+        0.9661])
+Epoch 10
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 1.2554, Accuracy: 2460/3603 (68%)
+
+tensor([0.9746, 0.0000, 0.9603, 0.0000, 0.9077, 0.3293, 0.9667, 0.1742, 0.4000,
+        0.9599])
+Epoch 11
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 1.1650, Accuracy: 2521/3603 (70%)
+
+tensor([0.9645, 0.0000, 0.9658, 0.0000, 0.9122, 0.5000, 0.9583, 0.3295, 0.4286,
+        0.9599])
+Epoch 12
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 1.2608, Accuracy: 2582/3603 (72%)
+
+tensor([0.9391, 0.0000, 0.9824, 0.0000, 0.9189, 0.4756, 0.9833, 0.5000, 0.4571,
+        0.9569])
+Epoch 13
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 1.0097, Accuracy: 2699/3603 (75%)
+
+tensor([0.9442, 0.0000, 0.9778, 0.0000, 0.9167, 0.8537, 0.9833, 0.8561, 0.5143,
+        0.9492])
+Epoch 14
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.9657, Accuracy: 2722/3603 (76%)
+
+tensor([0.9036, 0.0000, 0.9787, 0.0019, 0.9212, 0.9024, 0.9750, 0.9129, 0.6000,
+        0.9584])
+Epoch 15
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.9225, Accuracy: 2743/3603 (76%)
+
+tensor([0.9239, 0.0000, 0.9843, 0.0019, 0.9347, 0.9024, 0.9750, 0.9242, 0.6571,
+        0.9584])
+Epoch 16
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.8043, Accuracy: 2774/3603 (77%)
+
+tensor([0.9137, 0.0000, 0.9852, 0.0075, 0.9572, 0.9634, 0.9750, 0.9545, 0.7429,
+        0.9630])
+Epoch 17
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.7411, Accuracy: 2782/3603 (77%)
+
+tensor([0.9239, 0.0000, 0.9797, 0.0094, 0.9572, 0.9634, 0.9750, 0.9811, 0.8000,
+        0.9661])
+Epoch 18
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.7342, Accuracy: 2795/3603 (78%)
+
+tensor([0.9239, 0.0000, 0.9852, 0.0245, 0.9662, 0.9878, 0.9833, 0.9545, 0.8286,
+        0.9630])
+Epoch 19
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.7480, Accuracy: 2804/3603 (78%)
+
+tensor([0.9239, 0.0000, 0.9861, 0.0302, 0.9617, 0.9756, 0.9917, 0.9583, 0.9143,
+        0.9676])
+Epoch 20
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.6647, Accuracy: 2841/3603 (79%)
+
+tensor([0.9289, 0.0000, 0.9834, 0.0868, 0.9617, 0.9756, 0.9917, 0.9811, 0.9429,
+        0.9707])
+Epoch 21
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.6664, Accuracy: 2856/3603 (79%)
+
+tensor([0.9289, 0.0000, 0.9880, 0.1057, 0.9595, 0.9878, 0.9917, 0.9659, 0.9714,
+        0.9753])
+Epoch 22
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.6688, Accuracy: 2865/3603 (80%)
+
+tensor([0.9340, 0.0000, 0.9871, 0.1245, 0.9459, 0.9756, 0.9917, 0.9811, 0.9714,
+        0.9784])
+Epoch 23
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.6845, Accuracy: 2869/3603 (80%)
+
+tensor([0.9340, 0.0000, 0.9889, 0.1151, 0.9459, 0.9878, 0.9917, 0.9811, 1.0000,
+        0.9861])
+Epoch 24
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.6646, Accuracy: 2871/3603 (80%)
+
+tensor([0.9340, 0.0000, 0.9889, 0.1170, 0.9527, 0.9878, 0.9917, 0.9773, 1.0000,
+        0.9846])
+Epoch 25
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.5611, Accuracy: 2934/3603 (81%)
+
+tensor([0.9340, 0.0000, 0.9880, 0.2358, 0.9550, 1.0000, 0.9917, 0.9735, 1.0000,
+        0.9846])
+Epoch 26
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.5972, Accuracy: 2922/3603 (81%)
+
+tensor([0.9340, 0.0000, 0.9880, 0.2189, 0.9572, 0.9878, 0.9917, 0.9773, 0.9714,
+        0.9800])
+Epoch 27
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.5614, Accuracy: 2932/3603 (81%)
+
+tensor([0.9289, 0.0000, 0.9871, 0.2264, 0.9572, 1.0000, 0.9917, 0.9848, 1.0000,
+        0.9861])
+Epoch 28
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.5305, Accuracy: 2983/3603 (83%)
+
+tensor([0.9391, 0.0000, 0.9871, 0.3245, 0.9572, 1.0000, 0.9917, 0.9848, 0.9714,
+        0.9831])
+Epoch 29
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.4939, Accuracy: 3040/3603 (84%)
+
+tensor([0.9391, 0.0000, 0.9861, 0.4264, 0.9572, 1.0000, 0.9917, 0.9886, 1.0000,
+        0.9861])
+Epoch 30
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.4835, Accuracy: 3037/3603 (84%)
+
+tensor([0.9492, 0.0000, 0.9898, 0.4208, 0.9459, 1.0000, 0.9917, 0.9773, 0.9429,
+        0.9923])
+Epoch 31
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.4787, Accuracy: 3028/3603 (84%)
+
+tensor([0.9340, 0.0100, 0.9935, 0.3943, 0.9572, 1.0000, 0.9917, 0.9811, 0.9714,
+        0.9846])
+Epoch 32
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.4672, Accuracy: 3059/3603 (85%)
+
+tensor([0.9543, 0.0050, 0.9917, 0.4528, 0.9482, 1.0000, 0.9917, 0.9924, 1.0000,
+        0.9831])
+Epoch 33
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.4460, Accuracy: 3101/3603 (86%)
+
+tensor([0.9492, 0.0000, 0.9917, 0.5283, 0.9640, 1.0000, 0.9917, 0.9811, 0.9714,
+        0.9846])
+Epoch 34
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.4451, Accuracy: 3106/3603 (86%)
+
+tensor([0.9594, 0.0050, 0.9908, 0.5264, 0.9685, 1.0000, 0.9917, 0.9886, 1.0000,
+        0.9831])
+Epoch 35
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.4301, Accuracy: 3102/3603 (86%)
+
+tensor([0.9543, 0.0300, 0.9908, 0.5226, 0.9550, 1.0000, 0.9917, 0.9848, 1.0000,
+        0.9846])
+Epoch 36
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.4257, Accuracy: 3105/3603 (86%)
+
+tensor([0.9594, 0.0050, 0.9935, 0.5358, 0.9550, 1.0000, 0.9917, 0.9773, 0.9714,
+        0.9846])
+Epoch 37
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.4019, Accuracy: 3129/3603 (87%)
+
+tensor([0.9594, 0.0150, 0.9908, 0.5736, 0.9595, 1.0000, 0.9917, 0.9886, 0.9714,
+        0.9846])
+Epoch 38
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3938, Accuracy: 3155/3603 (88%)
+
+tensor([0.9594, 0.0100, 0.9908, 0.6245, 0.9617, 1.0000, 0.9917, 0.9924, 0.9714,
+        0.9815])
+Epoch 39
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3744, Accuracy: 3178/3603 (88%)
+
+tensor([0.9543, 0.0250, 0.9908, 0.6623, 0.9572, 1.0000, 0.9917, 0.9886, 1.0000,
+        0.9861])
+Epoch 40
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3436, Accuracy: 3236/3603 (90%)
+
+tensor([0.9645, 0.0800, 0.9889, 0.7415, 0.9662, 1.0000, 0.9917, 0.9924, 1.0000,
+        0.9861])
+Epoch 41
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3552, Accuracy: 3204/3603 (89%)
+
+tensor([0.9543, 0.0200, 0.9908, 0.7075, 0.9572, 1.0000, 0.9917, 0.9886, 1.0000,
+        0.9908])
+Epoch 42
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.4262, Accuracy: 3113/3603 (86%)
+
+tensor([0.9594, 0.0300, 0.9945, 0.5340, 0.9572, 1.0000, 0.9917, 0.9886, 0.9714,
+        0.9831])
+Epoch 43
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3539, Accuracy: 3191/3603 (89%)
+
+tensor([0.9594, 0.0850, 0.9945, 0.6528, 0.9595, 1.0000, 0.9917, 0.9886, 0.9714,
+        0.9877])
+Epoch 44
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3785, Accuracy: 3166/3603 (88%)
+
+tensor([0.9645, 0.0350, 0.9945, 0.6245, 0.9595, 1.0000, 0.9917, 0.9811, 0.9714,
+        0.9892])
+Epoch 45
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.4001, Accuracy: 3133/3603 (87%)
+
+tensor([0.9543, 0.0950, 0.9954, 0.5434, 0.9595, 1.0000, 0.9917, 0.9886, 0.9714,
+        0.9846])
+Epoch 46
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3825, Accuracy: 3150/3603 (87%)
+
+tensor([0.9594, 0.0400, 0.9954, 0.5943, 0.9617, 1.0000, 0.9917, 0.9773, 0.9714,
+        0.9877])
+Epoch 47
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3356, Accuracy: 3207/3603 (89%)
+
+tensor([0.9695, 0.1450, 0.9945, 0.6509, 0.9707, 1.0000, 0.9917, 0.9848, 0.9714,
+        0.9861])
+Epoch 48
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2956, Accuracy: 3280/3603 (91%)
+
+tensor([0.9594, 0.1700, 0.9889, 0.7811, 0.9775, 1.0000, 0.9917, 0.9924, 1.0000,
+        0.9877])
+Epoch 49
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3275, Accuracy: 3207/3603 (89%)
+
+tensor([0.9645, 0.0550, 0.9963, 0.6849, 0.9730, 1.0000, 0.9917, 0.9697, 0.9714,
+        0.9892])
+Epoch 50
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3713, Accuracy: 3170/3603 (88%)
+
+tensor([0.9746, 0.0700, 0.9954, 0.6094, 0.9730, 1.0000, 0.9917, 0.9697, 0.9714,
+        0.9877])
+Epoch 51
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3046, Accuracy: 3266/3603 (91%)
+
+tensor([0.9746, 0.1350, 0.9935, 0.7679, 0.9685, 1.0000, 0.9917, 0.9811, 0.9714,
+        0.9877])
+Epoch 52
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3797, Accuracy: 3164/3603 (88%)
+
+tensor([0.9797, 0.1050, 0.9963, 0.5792, 0.9730, 1.0000, 0.9917, 0.9773, 0.9714,
+        0.9861])
+Epoch 53
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3186, Accuracy: 3220/3603 (89%)
+
+tensor([0.9695, 0.1050, 0.9945, 0.6887, 0.9887, 1.0000, 0.9917, 0.9583, 0.9714,
+        0.9861])
+Epoch 54
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3568, Accuracy: 3208/3603 (89%)
+
+tensor([0.9797, 0.0500, 0.9954, 0.6736, 0.9820, 1.0000, 0.9917, 0.9811, 0.9714,
+        0.9877])
+Epoch 55
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3661, Accuracy: 3185/3603 (88%)
+
+tensor([0.9695, 0.1000, 0.9945, 0.6151, 0.9820, 1.0000, 0.9917, 0.9848, 0.9714,
+        0.9877])
+Epoch 56
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3086, Accuracy: 3251/3603 (90%)
+
+tensor([0.9797, 0.1500, 0.9954, 0.7264, 0.9707, 1.0000, 0.9917, 0.9811, 0.9714,
+        0.9877])
+Epoch 57
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2934, Accuracy: 3270/3603 (91%)
+
+tensor([0.9848, 0.1600, 0.9954, 0.7623, 0.9595, 1.0000, 0.9917, 0.9886, 0.9714,
+        0.9877])
+Epoch 58
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3028, Accuracy: 3255/3603 (90%)
+
+tensor([0.9848, 0.1950, 0.9926, 0.7075, 0.9775, 1.0000, 0.9917, 0.9886, 0.9714,
+        0.9908])
+Epoch 59
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3073, Accuracy: 3241/3603 (90%)
+
+tensor([0.9848, 0.1350, 0.9963, 0.7208, 0.9572, 1.0000, 0.9917, 0.9811, 0.9714,
+        0.9877])
+Epoch 60
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2866, Accuracy: 3274/3603 (91%)
+
+tensor([0.9797, 0.1600, 0.9954, 0.7566, 0.9775, 1.0000, 0.9917, 0.9886, 0.9714,
+        0.9877])
+Epoch 61
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.3088, Accuracy: 3215/3603 (89%)
+
+tensor([0.9898, 0.1850, 0.9963, 0.6566, 0.9617, 1.0000, 0.9917, 0.9621, 0.9714,
+        0.9877])
+Epoch 62
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2911, Accuracy: 3277/3603 (91%)
+
+tensor([0.9898, 0.1900, 0.9945, 0.7491, 0.9842, 1.0000, 0.9917, 0.9811, 0.9714,
+        0.9861])
+Epoch 63
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2999, Accuracy: 3265/3603 (91%)
+
+tensor([0.9949, 0.3200, 0.9945, 0.6887, 0.9685, 1.0000, 0.9917, 0.9811, 0.9714,
+        0.9861])
+Epoch 64
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2413, Accuracy: 3312/3603 (92%)
+
+tensor([0.9797, 0.2100, 0.9945, 0.8208, 0.9640, 1.0000, 0.9917, 0.9924, 0.9714,
+        0.9877])
+Epoch 65
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2479, Accuracy: 3319/3603 (92%)
+
+tensor([0.9746, 0.3850, 0.9954, 0.7698, 0.9640, 1.0000, 0.9917, 0.9848, 0.9714,
+        0.9892])
+Epoch 66
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2593, Accuracy: 3310/3603 (92%)
+
+tensor([0.9797, 0.3900, 0.9954, 0.7491, 0.9640, 1.0000, 0.9917, 0.9886, 0.9714,
+        0.9877])
+Epoch 67
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2501, Accuracy: 3330/3603 (92%)
+
+tensor([0.9949, 0.3750, 0.9945, 0.7698, 0.9842, 1.0000, 0.9917, 0.9924, 0.9714,
+        0.9877])
+Epoch 68
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2412, Accuracy: 3319/3603 (92%)
+
+tensor([1.0000, 0.3000, 0.9963, 0.7981, 0.9707, 1.0000, 0.9917, 0.9659, 0.9714,
+        0.9861])
+Epoch 69
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2302, Accuracy: 3338/3603 (93%)
+
+tensor([0.9949, 0.3000, 0.9963, 0.8132, 0.9842, 1.0000, 0.9917, 0.9848, 0.9714,
+        0.9877])
+Epoch 70
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2085, Accuracy: 3360/3603 (93%)
+
+tensor([0.9848, 0.4350, 0.9954, 0.8170, 0.9707, 1.0000, 0.9917, 0.9924, 0.9714,
+        0.9877])
+Epoch 71
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1935, Accuracy: 3384/3603 (94%)
+
+tensor([0.9898, 0.4350, 0.9926, 0.8660, 0.9752, 1.0000, 0.9917, 0.9848, 0.9714,
+        0.9877])
+Epoch 72
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2124, Accuracy: 3365/3603 (93%)
+
+tensor([0.9848, 0.5550, 0.9945, 0.7717, 0.9910, 1.0000, 0.9917, 0.9811, 0.9714,
+        0.9877])
+Epoch 73
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2187, Accuracy: 3362/3603 (93%)
+
+tensor([1.0000, 0.4200, 0.9935, 0.8283, 0.9730, 1.0000, 0.9917, 0.9773, 0.9714,
+        0.9892])
+Epoch 74
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2066, Accuracy: 3375/3603 (94%)
+
+tensor([0.9848, 0.6150, 0.9926, 0.7849, 0.9707, 1.0000, 0.9917, 0.9886, 0.9714,
+        0.9877])
+Epoch 75
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2223, Accuracy: 3357/3603 (93%)
+
+tensor([0.9949, 0.3900, 0.9926, 0.8453, 0.9550, 1.0000, 0.9917, 0.9886, 0.9714,
+        0.9877])
+Epoch 76
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2160, Accuracy: 3374/3603 (94%)
+
+tensor([1.0000, 0.4600, 0.9963, 0.8321, 0.9640, 1.0000, 0.9917, 0.9924, 0.9714,
+        0.9877])
+Epoch 77
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2442, Accuracy: 3326/3603 (92%)
+
+tensor([0.9949, 0.4500, 0.9954, 0.7453, 0.9775, 1.0000, 0.9917, 0.9735, 0.9714,
+        0.9892])
+Epoch 78
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1887, Accuracy: 3399/3603 (94%)
+
+tensor([0.9949, 0.5100, 0.9945, 0.8434, 0.9910, 1.0000, 0.9917, 0.9924, 0.9714,
+        0.9877])
+Epoch 79
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.2092, Accuracy: 3355/3603 (93%)
+
+tensor([0.9949, 0.4550, 0.9935, 0.7943, 0.9887, 1.0000, 0.9917, 0.9735, 0.9714,
+        0.9877])
+Epoch 80
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1933, Accuracy: 3375/3603 (94%)
+
+tensor([1.0000, 0.4150, 0.9917, 0.8679, 0.9685, 1.0000, 0.9917, 0.9659, 0.9714,
+        0.9892])
+Epoch 81
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1817, Accuracy: 3390/3603 (94%)
+
+tensor([0.9898, 0.4200, 0.9908, 0.8887, 0.9640, 1.0000, 0.9917, 0.9924, 1.0000,
+        0.9892])
+Epoch 82
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1717, Accuracy: 3411/3603 (95%)
+
+tensor([1.0000, 0.5200, 0.9917, 0.8906, 0.9707, 1.0000, 0.9917, 0.9773, 0.9714,
+        0.9877])
+Epoch 83
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1949, Accuracy: 3376/3603 (94%)
+
+tensor([0.9949, 0.4350, 0.9898, 0.8604, 0.9820, 1.0000, 0.9917, 0.9583, 0.9714,
+        0.9892])
+Epoch 84
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1854, Accuracy: 3400/3603 (94%)
+
+tensor([0.9949, 0.4600, 0.9954, 0.8698, 0.9865, 1.0000, 0.9917, 0.9848, 0.9714,
+        0.9877])
+Epoch 85
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1735, Accuracy: 3413/3603 (95%)
+
+tensor([1.0000, 0.5500, 0.9954, 0.8774, 0.9752, 1.0000, 0.9917, 0.9583, 0.9714,
+        0.9908])
+Epoch 86
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1677, Accuracy: 3430/3603 (95%)
+
+tensor([0.9949, 0.5900, 0.9926, 0.8792, 0.9910, 1.0000, 0.9917, 0.9848, 0.9714,
+        0.9877])
+Epoch 87
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1726, Accuracy: 3412/3603 (95%)
+
+tensor([1.0000, 0.5500, 0.9889, 0.8887, 0.9775, 1.0000, 0.9917, 0.9697, 0.9714,
+        0.9846])
+Epoch 88
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1774, Accuracy: 3410/3603 (95%)
+
+tensor([1.0000, 0.5500, 0.9889, 0.8679, 0.9865, 1.0000, 0.9917, 0.9773, 0.9714,
+        0.9892])
+Epoch 89
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1796, Accuracy: 3400/3603 (94%)
+
+tensor([1.0000, 0.5700, 0.9871, 0.8528, 0.9685, 1.0000, 0.9917, 0.9924, 1.0000,
+        0.9877])
+Epoch 90
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1500, Accuracy: 3451/3603 (96%)
+
+tensor([1.0000, 0.7200, 0.9935, 0.8755, 0.9797, 1.0000, 0.9917, 0.9848, 0.9714,
+        0.9877])
+Epoch 91
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1685, Accuracy: 3424/3603 (95%)
+
+tensor([1.0000, 0.5450, 0.9908, 0.8849, 0.9865, 1.0000, 0.9917, 0.9886, 1.0000,
+        0.9892])
+Epoch 92
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1708, Accuracy: 3422/3603 (95%)
+
+tensor([1.0000, 0.5850, 0.9926, 0.8585, 0.9910, 1.0000, 0.9917, 0.9962, 0.9714,
+        0.9877])
+Epoch 93
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1618, Accuracy: 3407/3603 (95%)
+
+tensor([1.0000, 0.4750, 0.9898, 0.9000, 0.9640, 1.0000, 0.9917, 0.9735, 1.0000,
+        0.9954])
+Epoch 94
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1391, Accuracy: 3458/3603 (96%)
+
+tensor([1.0000, 0.7000, 0.9917, 0.8906, 0.9910, 1.0000, 0.9917, 0.9848, 0.9714,
+        0.9877])
+Epoch 95
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1416, Accuracy: 3446/3603 (96%)
+
+tensor([1.0000, 0.6750, 0.9926, 0.8849, 0.9775, 1.0000, 0.9917, 0.9773, 1.0000,
+        0.9908])
+Epoch 96
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1786, Accuracy: 3392/3603 (94%)
+
+tensor([1.0000, 0.6300, 0.9945, 0.7943, 0.9775, 1.0000, 0.9917, 0.9811, 1.0000,
+        0.9908])
+Epoch 97
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1410, Accuracy: 3463/3603 (96%)
+
+tensor([1.0000, 0.7500, 0.9935, 0.8698, 0.9910, 1.0000, 0.9917, 0.9962, 0.9714,
+        0.9892])
+Epoch 98
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1484, Accuracy: 3436/3603 (95%)
+
+tensor([1.0000, 0.6650, 0.9889, 0.8679, 0.9865, 1.0000, 0.9917, 0.9886, 0.9714,
+        0.9892])
+Epoch 99
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1911, Accuracy: 3391/3603 (94%)
+
+tensor([1.0000, 0.6400, 0.9889, 0.7943, 0.9797, 1.0000, 0.9917, 0.9924, 1.0000,
+        0.9892])
+Epoch 100
+update remote models 1 / 30
+update remote models 2 / 30
+update remote models 3 / 30
+update remote models 4 / 30
+update remote models 5 / 30
+update remote models 6 / 30
+update remote models 7 / 30
+update remote models 8 / 30
+update remote models 9 / 30
+update remote models 10 / 30
+update remote models 11 / 30
+update remote models 12 / 30
+update remote models 13 / 30
+update remote models 14 / 30
+update remote models 15 / 30
+update remote models 16 / 30
+update remote models 17 / 30
+update remote models 18 / 30
+update remote models 19 / 30
+update remote models 20 / 30
+update remote models 21 / 30
+update remote models 22 / 30
+update remote models 23 / 30
+update remote models 24 / 30
+update remote models 25 / 30
+update remote models 26 / 30
+update remote models 27 / 30
+update remote models 28 / 30
+update remote models 29 / 30
+update remote models 30 / 30
+
+Test set: Average loss: 0.1667, Accuracy: 3414/3603 (95%)
+
+tensor([0.9949, 0.6650, 0.9935, 0.8340, 0.9775, 1.0000, 0.9917, 0.9773, 0.9714,
+        0.9877])
