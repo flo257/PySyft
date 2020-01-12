@@ -8,7 +8,7 @@
 #distribution of data: 50% classes on 50% data on 20% clients exclusively
 #percentage of poisoned data in backdoored nodes: 1
 #order of time backdoors being inserted: no
-#model replacement: True
+#model replacement: False
 #starttime: 082200
 training_type;epoch_number;learn_rate;avg_training_loss;avg_test_loss;test_accuracy;timestamp
 normal;1;0.0001;tensor(2.2712, grad_fn=<DivBackward0>);2.2193008219570443;30.03053011379406;082340
