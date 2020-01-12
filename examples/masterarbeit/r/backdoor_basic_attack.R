@@ -12,7 +12,7 @@ loadResultsFile <- function(filename){
 
 backdoor_sequential <-  loadResultsFile("exp_traffic_20191122-202041.txt")
 #elapsed time wrong
-backdoor_aggregation <-  loadResultsFile("exp_traffic_20191206-151859.txt")
+backdoor_aggregation <-  loadResultsFile("exp_traffic_20191221-160121.txt")
 #elapsed time wrong
 
 #Plot 1"
@@ -43,14 +43,13 @@ lines(backdoor_aggregation$test_accuracy[backdoor_aggregation$training_type == "
 
 
 
-legend("bottomright", 
-       legend=c("sequential training: benign testset accuracy", 
+legend("bottomright",
+       c("sequential training: benign testset accuracy", 
                 "federated averaging: benign testset accuracy",
                 "sequential averaging: backdoor testset accuracy",
                 "federated averaging: backdoor testset accuracy"),
        col=c("red", "blue", "red", "blue"), 
-       x = "right",
-       lty=c(1,1,2,2), cex=0.7)
+       lty=c(1,1,2,2), cex=0.5)
 
 #Plot 2"
 plot(backdoor_sequential$avg_test_loss[backdoor_sequential$training_type == "normal"] ~ 
@@ -78,7 +77,7 @@ plot(backdoor_aggregation$avg_test_loss[backdoor_aggregation$training_type == "b
      col = "blue", 
      xlab = "Epoch number", 
      ylab = "Testset loss",
-     ylim=c(-1,50),
+     ylim=c(-1,10),
      main = "Testset loss \nof malicious testset")
 
 lines(backdoor_sequential$avg_test_loss[backdoor_sequential$training_type == "backdoor"] ~ 
@@ -86,8 +85,9 @@ lines(backdoor_sequential$avg_test_loss[backdoor_sequential$training_type == "ba
       type = "l",
       col = "red")
 
-legend("right", 
+legend("topright", 
        legend=c("sequential training", 
                 "federated averaging"),
        col=c("red", "blue"),
        lty=c(1,1), cex=0.7)
+
