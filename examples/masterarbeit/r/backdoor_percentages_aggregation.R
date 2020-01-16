@@ -12,6 +12,8 @@ loadResultsFile <- function(filename){
 
 backdoor_100 <- loadResultsFile("exp_traffic_20191221-160121.txt")
 backdoor_50 <-loadResultsFile("exp_traffic_20191222-114051.txt")
+
+backdoor_50 <-loadResultsFile("exp_traffic_20191222-114051.txt")
 backdoor_25 <-loadResultsFile("exp_traffic_20191222-141343.txt")
 
 "Epoch number ~ Test accuracy"
