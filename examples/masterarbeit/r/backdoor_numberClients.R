@@ -1,5 +1,5 @@
 loadResultsFile <- function(filename){
-  object = read.table(paste("/Users/floriannuding/PySyft-fork/examples/masterarbeit/results/", filename, sep=""),
+  object = read.table(paste("/Users/floriannuding/PySyft-fork/examples/masterarbeit/results/traffic/", filename, sep=""),
                       skip=11,
                       header = TRUE,
                       sep = ";",
@@ -29,7 +29,7 @@ plot(backdoor_20percent$test_accuracy[backdoor_20percent$training_type == "norma
      col = "red", 
      xlab = "Epoch number", 
      ylab = "Test accuracy",
-     main = "Testset performance\nwith p% malicious clients")
+     main = "Testset performance\nwith p% malicious clients\nsequential merging")
 
 lines(backdoor_20percent$test_accuracy[backdoor_20percent$training_type == "backdoor"] ~ 
         backdoor_20percent$epoch_number[backdoor_20percent$training_type == "backdoor"], 
@@ -58,13 +58,14 @@ lines(backdoor_5percent$test_accuracy[backdoor_5percent$training_type == "backdo
       type = "l", 
       lty=2,
       col = "green")
-
+abline(h=95, lty=3)
 legend("bottomright", 
        legend=c("benign test data (p=0.2)", 
                 "malicious test data (p=0.2)",
                 "benign test data (p=0.1)", 
                 "malicious test data (p=0.1)", 
                 "benign test data (p=0.05)", 
-                "malicious test data (p=0.05)"), 
-       col=c("red", "red", "blue", "blue", "green", "green"), 
-       lty=c(1,2,1,2,1,2), cex=0.8)
+                "malicious test data (p=0.05)",
+                "95% accuracy"), 
+       col=c("red", "red", "blue", "blue", "green", "green","black"), 
+       lty=c(1,2,1,2,1,2,3), cex=0.8)

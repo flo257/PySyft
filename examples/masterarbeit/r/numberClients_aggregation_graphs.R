@@ -1,5 +1,5 @@
 loadResultsFile <- function(filename){
-  object = read.table(paste("/Users/floriannuding/PySyft-fork/examples/masterarbeit/results/", filename, sep=""),
+  object = read.table(paste("/Users/floriannuding/PySyft-fork/examples/masterarbeit/results/traffic/", filename, sep=""),
                       skip=11,
                       header = TRUE,
                       sep = ";",
@@ -29,8 +29,9 @@ lines(client_5$avg_training_loss[client_5$training_type == "normal"] ~ client_5$
 lines(client_2$avg_training_loss[client_2$training_type == "normal"] ~ client_2$epoch_number[client_2$training_type == "normal"], 
       type = "l", 
       col = "green")
-legend("right", legend=c("no. of clients = 8", "no. of clients = 5", "no. of clients = 2"),
-       col=c("red", "blue", "green"), lty=1, cex=0.8)
+
+legend("right", legend=c("no. of clients = 8", "no. of clients = 5", "no. of clients = 2","95% accuracy"),
+       col=c("red", "blue", "green"), lty=c(1,1,1), cex=0.8)
 
 "Epoch number ~ test accuracy"
 plot(client_8$test_accuracy[client_8$training_type == "normal"] ~ client_8$epoch_number[client_8$training_type == "normal"], 
@@ -47,8 +48,9 @@ lines(client_5$test_accuracy[client_5$training_type == "normal"] ~ client_5$epoc
 lines(client_2$test_accuracy[client_2$training_type == "normal"] ~ client_2$epoch_number[client_2$training_type == "normal"], 
       type = "l", 
       col = "green")
-legend("right", legend=c("no. of clients = 8", "no. of clients = 5", "no. of clients = 2"),
-       col=c("red", "blue", "green"), lty=1, cex=0.8)
+abline(h=95, lty=2)
+legend("bottomright", legend=c("no. of clients = 8", "no. of clients = 5", "no. of clients = 2", "95% accuracy"),
+       col=c("red", "blue", "green", "black"), lty=c(1,1,1,2), cex=0.8)
 
 
 # epoch_number ~ elapsed_time

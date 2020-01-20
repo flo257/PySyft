@@ -1,5 +1,5 @@
 loadResultsFile <- function(filename){
-  object = read.table(paste("/Users/floriannuding/PySyft-fork/examples/masterarbeit/results/", filename, sep=""),
+  object = read.table(paste("/Users/floriannuding/PySyft-fork/examples/masterarbeit/results/traffic/", filename, sep=""),
                       skip=11,
                       header = TRUE,
                       sep = ";",
@@ -13,7 +13,7 @@ loadResultsFile <- function(filename){
 backdoor_sequential <-  loadResultsFile("exp_traffic_20191122-202041.txt")
 #elapsed time wrong
 backdoor_aggregation <-  loadResultsFile("exp_traffic_20191221-160121.txt")
-#elapsed time wrong
+#elapsed time wrong - redo
 
 #Plot 1"
 plot(backdoor_sequential$test_accuracy[backdoor_sequential$training_type == "normal"] ~ 
@@ -22,7 +22,7 @@ plot(backdoor_sequential$test_accuracy[backdoor_sequential$training_type == "nor
      col = "red", 
      xlab = "Epoch number", 
      ylab = "Test accuracy",
-     main = "Sequential Training vs. Federated Averaging\nat 20% malicious clients")
+     main = "Sequential Training vs. Federated Averaging\nat 20% malicious clients\nREDO GRAPH")
 
 lines(backdoor_aggregation$test_accuracy[backdoor_aggregation$training_type == "normal"] ~ 
         backdoor_aggregation$epoch_number[backdoor_aggregation$training_type == "normal"], 
@@ -41,15 +41,16 @@ lines(backdoor_aggregation$test_accuracy[backdoor_aggregation$training_type == "
       lty = 2,
       col = "blue")
 
-
+abline(h=95,lty=3)
 
 legend("bottomright",
        c("sequential training: benign testset accuracy", 
                 "federated averaging: benign testset accuracy",
                 "sequential averaging: backdoor testset accuracy",
-                "federated averaging: backdoor testset accuracy"),
-       col=c("red", "blue", "red", "blue"), 
-       lty=c(1,1,2,2), cex=0.5)
+                "federated averaging: backdoor testset accuracy",
+         "95% accuracy"),
+       col=c("red", "blue", "red", "blue", "black"), 
+       lty=c(1,1,2,2,3), cex=0.5)
 
 #Plot 2"
 plot(backdoor_sequential$avg_test_loss[backdoor_sequential$training_type == "normal"] ~ 
