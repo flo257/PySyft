@@ -1,5 +1,5 @@
 loadResultsFile <- function(filename){
-  object = read.table(paste("/Users/floriannuding/PySyft-fork/examples/masterarbeit/results/", filename, sep=""),
+  object = read.table(paste("/Users/floriannuding/PySyft-fork/examples/masterarbeit/results/traffic/", filename, sep=""),
                       skip=11,
                       header = TRUE,
                       sep = ";",
@@ -29,17 +29,18 @@ lines(client_1_64$test_accuracy ~ client_1_64$epoch_number,
 lines(client_5_32$test_accuracy ~ client_5_32$epoch_number, 
       type = "l", 
       lty = 2,
-      col = "black")
+      col = "yellow")
 lines(client_5_64$test_accuracy ~ client_5_64$epoch_number, 
       type = "l", 
       lty = 2,
       col = "green")
-
+abline(h=95, lty=3)
 legend("bottomright", legend=c("no. of clients = 1, batch size = 32", 
                                "no. of clients = 1, batch size = 64", 
                                "no. of clients = 5, batch size = 32",
-                               "no. of clients = 5, batch size = 64"),
-       col=c("red", "blue", "black", "green"), lty=c(1,1,2,2), cex=0.8)
+                               "no. of clients = 5, batch size = 64",
+                               "95% accuracy"),
+       col=c("red", "blue", "yellow", "green", "black"), lty=c(1,1,2,2,3), cex=0.8)
 
 # Elapsed Time vs. Test accuracy
 plot(client_1_32$test_accuracy ~ client_1_32$elapsed_time, 

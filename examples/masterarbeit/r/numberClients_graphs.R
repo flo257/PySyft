@@ -1,5 +1,5 @@
 loadResultsFile <- function(filename){
-  object = read.table(paste("/Users/floriannuding/PySyft-fork/examples/masterarbeit/results/", filename, sep=""),
+  object = read.table(paste("/Users/floriannuding/PySyft-fork/examples/masterarbeit/results/traffic/", filename, sep=""),
                       skip=11,
                       header = TRUE,
                       sep = ";",
@@ -27,8 +27,15 @@ lines(client_5$test_accuracy[1:25] ~ client_5$epoch_number[1:25],
 lines(client_10$test_accuracy[1:25] ~ client_10$epoch_number[1:25], 
       type = "l", 
       col = "green")
-legend("bottomright", legend=c("no. of clients = 1", "no. of clients = 5", "no. of clients = 10"),
-       col=c("red", "blue", "green"), lty=1, cex=0.8)
+abline(h=95, col="black", lty = 2)
+
+legend("bottomright", 
+       legend=c("1 client", 
+                "5 cients",
+                "10 clients",
+                "95% accuracy"),
+       col=c("red", "blue", "green", "black"), 
+       lty=c(1,1,1,2), cex=0.7)
 
 # Elapsed Time vs. Test accuracy
 plot(client_1$test_accuracy[1:40] ~ client_1$elapsed_time[1:40], 
@@ -43,8 +50,15 @@ lines(client_5$test_accuracy[1:40] ~ client_5$elapsed_time[1:40],
 lines(client_10$test_accuracy[1:40] ~ client_10$elapsed_time[1:40], 
       type = "l", 
       col = "green")
-legend("bottomright", legend=c("no. of clients = 1", "no. of clients = 5", "no. of clients = 10"),
-       col=c("red", "blue", "green"), lty=1, cex=0.8)
+abline(h=95, col="black", lty = 2)
+
+legend("bottomright", 
+       legend=c("1 client", 
+                "5 cients",
+                "10 clients",
+                "95% accuracy"),
+       col=c("red", "blue", "green", "black"), 
+       lty=c(1,1,1,2), cex=0.7)
 
 # epoch_number ~ elapsed_time
 plot(client_1$epoch_number[1:40] ~ client_1$elapsed_time[1:40], 
@@ -59,6 +73,12 @@ lines(client_5$epoch_number[1:40] ~ client_5$elapsed_time[1:40],
 lines(client_10$epoch_number[1:40] ~ client_10$elapsed_time[1:40], 
       type = "l", 
       col = "green")
-legend("bottomright", legend=c("no. of clients = 1", "no. of clients = 5", "no. of clients = 10"),
-       col=c("red", "blue", "green"), lty=1, cex=0.8)
+
+legend("bottomright", 
+       legend=c("1 client", 
+                "5 cients",
+                "10 clients",
+                "95% accuracy"),
+       col=c("red", "blue", "green", "black"), 
+       lty=c(1,1,1,2), cex=0.7)
 

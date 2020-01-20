@@ -1,5 +1,5 @@
 loadResultsFile <- function(filename){
-  object = read.table(paste("/Users/floriannuding/PySyft-fork/examples/masterarbeit/results/", filename, sep=""),
+  object = read.table(paste("/Users/floriannuding/PySyft-fork/examples/masterarbeit/results/traffic/", filename, sep=""),
                       skip=11,
                       header = TRUE,
                       sep = ";",
@@ -42,14 +42,16 @@ lines(backdoor_100_last$test_accuracy[backdoor_100_last$training_type == "backdo
       type = "l", 
       lty=2,
       col = "blue")
+abline(h=95, lty=3)
 
 legend("bottomright", 
        legend=c("benign test data (backdoors trained first)", 
                 "malicious test data (backdoors trained first)",
                 "benign test data (backdoors trained last)", 
-                "malicious test data (backdoors trained last)"),
-       col=c("red", "red", "blue", "blue"), 
-       lty=c(1,2,1,2), cex=0.6)
+                "malicious test data (backdoors trained last)",
+                "95% accuracy"),
+       col=c("red", "red", "blue", "blue","black"), 
+       lty=c(1,2,1,2,3), cex=0.6)
 
 "Epoch number ~ Test accuracy"
 plot(backdoor_100_last$avg_training_loss[backdoor_100_last$training_type == "normal"] ~ 

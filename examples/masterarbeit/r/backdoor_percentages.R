@@ -1,5 +1,5 @@
 loadResultsFile <- function(filename){
-  object = read.table(paste("/Users/floriannuding/PySyft-fork/examples/masterarbeit/results/", filename, sep=""),
+  object = read.table(paste("/Users/floriannuding/PySyft-fork/examples/masterarbeit/results/traffic/", filename, sep=""),
                       skip=11,
                       header = TRUE,
                       sep = ";",
@@ -16,7 +16,7 @@ backdoor_100$timestamp[111:200] = backdoor_100$timestamp[111:200] + 86400
 backdoor_100$elapsed_time = ((backdoor_100$timestamp - backdoor_100$timestamp[1])/60)
 backdoor_50 <-loadResultsFile("exp_traffic_20191126-123859.txt")
 backdoor_25 <-loadResultsFile("exp_traffic_20191126-182816.txt")
-
+no_backdoors <- loadResultsFile("exp_traffic_20191121-100638.txt")
 "Epoch number ~ Test accuracy"
 plot(backdoor_100$test_accuracy[backdoor_100$training_type == "normal"] ~ 
        backdoor_100$epoch_number[backdoor_100$training_type == "normal"], 
@@ -36,14 +36,22 @@ lines(backdoor_25$test_accuracy[backdoor_25$training_type == "normal"] ~
       type = "l", 
       col = "green")
 
+lines(no_backdoors$test_accuracy[backdoor_25$training_type == "normal"] ~ 
+        no_backdoors$epoch_number[backdoor_25$training_type == "normal"], 
+      type = "l", 
+      col = "black")
+
+abline(h=95, lty = 2)
 
 
 legend("bottomright", 
        legend=c("malicious clients contain 100% backdoored data", 
                 "malicious clients contain 50% backdoored data",
-                "malicious clients contain 25% backdoored data"),
-       col=c("red", "blue", "green"), 
-       lty=c(1,1,1), cex=0.7)
+                "malicious clients contain 25% backdoored data",
+                "no malicious clients",
+                "95% accuracy"),
+       col=c("red", "blue", "green","black","black"), 
+       lty=c(1,1,1,1,2), cex=0.7)
 
 plot(backdoor_100$test_accuracy[backdoor_100$training_type == "backdoor"] ~ 
        backdoor_100$epoch_number[backdoor_100$training_type == "backdoor"], 
@@ -70,3 +78,4 @@ legend("bottomright",
                 "malicious clients contain 25% backdoored data"),
        col=c("red", "blue", "green"), 
        lty=c(1,1,1), cex=0.7)
+

@@ -36,14 +36,15 @@ lines(backdoor_25$test_accuracy[backdoor_25$training_type == "normal"] ~
       type = "l", 
       col = "green")
 
-
+abline(h=95, lty=2)
 
 legend("bottomright", 
        legend=c("malicious clients at p=100%", 
                 "malicious clients at p=50%",
-                "malicious clients at p=25%"),
-       col=c("red", "blue", "green"), 
-       lty=c(1,1,1), cex=0.7)
+                "malicious clients at p=25%",
+                "95% accuracy"),
+       col=c("red", "blue", "green","black"), 
+       lty=c(1,1,1,2), cex=0.7)
 
 plot(backdoor_100$test_accuracy[backdoor_100$training_type == "backdoor"] ~ 
        backdoor_100$epoch_number[backdoor_100$training_type == "backdoor"], 
@@ -64,12 +65,15 @@ lines(backdoor_25$test_accuracy[backdoor_25$training_type == "backdoor"] ~
       type = "l", 
       col = "green")
 
-legend("topleft", 
+abline(h=95, lty=2)
+
+legend("bottomright", 
        legend=c("malicious clients at p=100%", 
                 "malicious clients at p=50%",
-                "malicious clients at p=25%"),
-       col=c("red", "blue", "green"), 
-       lty=c(1,1,1), cex=0.7)
+                "malicious clients at p=25%",
+                "95% accuracy"),
+       col=c("red", "blue", "green","black"), 
+       lty=c(1,1,1,2), cex=0.7)
 
 #trainloss
 plot(backdoor_100$avg_test_loss[backdoor_100$training_type == "backdoor"] ~ 
