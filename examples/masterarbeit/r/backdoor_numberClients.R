@@ -21,6 +21,7 @@ backdoor_5percent <- loadResultsFile("exp_traffic_20191123-193202.txt")
 backdoor_5percent$timestamp[155:200] = backdoor_5percent$timestamp[155:200] + 86400
 backdoor_5percent$elapsed_time = ((backdoor_5percent$timestamp - backdoor_5percent$timestamp[1])/60)
 
+backdoor_0 <- loadResultsFile("exp_traffic_20191121-100638.txt")
 
 "Epoch number ~ Test accuracy"
 plot(backdoor_20percent$test_accuracy[backdoor_20percent$training_type == "normal"] ~ 
@@ -58,6 +59,14 @@ lines(backdoor_5percent$test_accuracy[backdoor_5percent$training_type == "backdo
       type = "l", 
       lty=2,
       col = "green")
+
+lines(backdoor_0$test_accuracy ~ 
+        backdoor_0$epoch_number, 
+      type = "l", 
+      col = "black")
+
+line()
+
 abline(h=95, lty=3)
 legend("bottomright", 
        legend=c("benign test data (p=0.2)", 
@@ -66,6 +75,7 @@ legend("bottomright",
                 "malicious test data (p=0.1)", 
                 "benign test data (p=0.05)", 
                 "malicious test data (p=0.05)",
-                "95% accuracy"), 
+                "benign test data (no backdoor)"), 
        col=c("red", "red", "blue", "blue", "green", "green","black"), 
-       lty=c(1,2,1,2,1,2,3), cex=0.8)
+       lty=c(1,2,1,2,1,2,1), cex=0.8)
+

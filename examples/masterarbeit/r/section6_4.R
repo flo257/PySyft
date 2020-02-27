@@ -10,10 +10,13 @@ loadResultsFile <- function(filename){
   return(object)
 }
 
-backdoor_6_50 <- loadResultsFile("exp_traffic_20200109-201907.txt")
+backdoor_6_25 <- loadResultsFile("exp_traffic_20200121-121133.txt")
+backdoor_6_50 <- loadResultsFile("exp_traffic_20200124-190249.txt")
 backdoor_6_100 <- loadResultsFile("exp_traffic_20200109-102924.txt")
+
+backdoor_4_25 <- loadResultsFile("exp_traffic_20191220-091548.txt")
 backdoor_4_50 <- loadResultsFile("exp_traffic_20191220-104730.txt")
-backdoor_4_100 <- loadResultsFile("exp_traffic_20191223-174802.txt")
+backdoor_4_100 <- loadResultsFile("exp_traffic_20200125-151122.txt")
 
 "Epoch number ~ Test accuracy : 100%"
 plot(backdoor_6_100$test_accuracy[backdoor_6_100$training_type == "normal"] ~ 
@@ -22,7 +25,7 @@ plot(backdoor_6_100$test_accuracy[backdoor_6_100$training_type == "normal"] ~
      col = "red", 
      xlab = "Epoch number", 
      ylab = "Test accuracy",
-     xlim = c(0, 50),
+     xlim = c(0,100),
      ylim = c(0,100),
      main = "Testset performance\nwith 100% malicious data in backdoored clients")
 
@@ -54,7 +57,7 @@ legend("bottomright",
                 "malicious testset: #benign = 4, #malicious = 1",
                 "95% accuracy"),
        col=c("red", "red", "blue", "blue", "black"), 
-       lty=c(1,1,2,2,3), cex=0.7)
+       lty=c(1,2,1,2,3), cex=0.7)
 
 
 
@@ -66,7 +69,7 @@ plot(backdoor_6_50$test_accuracy[backdoor_6_50$training_type == "normal"] ~
      col = "red", 
      xlab = "Epoch number", 
      ylab = "Test accuracy",
-     xlim = c(0, 50),
+     xlim = c(0, 100),
      ylim = c(0,100),
      main = "Testset performance\nwith 50% malicious data in backdoored clients")
 
@@ -97,5 +100,46 @@ legend("bottomright",
                 "malicious testset: #benign = 4, #malicious = 1",
                 "95% accuracy"),
        col=c("red", "red", "blue", "blue", "black"), 
-       lty=c(1,1,2,2,3), cex=0.7)
+       lty=c(1,2,1,2,3), cex=0.7)
 
+
+
+"Epoch number ~ Test accuracy 25%"
+plot(backdoor_6_25$test_accuracy[backdoor_6_25$training_type == "normal"] ~ 
+       backdoor_6_25$epoch_number[backdoor_6_25$training_type == "normal"], 
+     type = "l", 
+     col = "red", 
+     xlab = "Epoch number", 
+     ylab = "Test accuracy",
+     xlim = c(0, 100),
+     ylim = c(0,100),
+     main = "Testset performance\nwith 25% malicious data in backdoored clients")
+
+lines(backdoor_6_25$test_accuracy[backdoor_6_25$training_type == "backdoor"] ~ 
+        backdoor_6_25$epoch_number[backdoor_6_25$training_type == "backdoor"], 
+      type = "l", 
+      col = "red",
+      lty = 2)
+
+lines(backdoor_4_25$test_accuracy[backdoor_4_25$training_type == "normal"] ~ 
+        backdoor_4_25$epoch_number[backdoor_4_25$training_type == "normal"], 
+      type = "l", 
+      col = "blue",
+      lty = 1)
+
+lines(backdoor_4_50$test_accuracy[backdoor_4_50$training_type == "backdoor"] ~ 
+        backdoor_4_50$epoch_number[backdoor_4_50$training_type == "backdoor"], 
+      type = "l", 
+      col = "blue",
+      lty = 2)
+
+abline(h=95, lty=3)
+
+legend("bottomright", 
+       legend=c("benign testset: #benign = 6, #malicious = 1", 
+                "malicious testset: #benign = 6, #malicious = 1",
+                "benign testset: #benign = 4, #malicious = 1", 
+                "malicious testset: #benign = 4, #malicious = 1",
+                "95% accuracy"),
+       col=c("red", "red", "blue", "blue", "black"), 
+       lty=c(1,2,1,2,3), cex=0.7)

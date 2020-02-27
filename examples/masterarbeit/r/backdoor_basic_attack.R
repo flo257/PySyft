@@ -12,7 +12,7 @@ loadResultsFile <- function(filename){
 
 backdoor_sequential <-  loadResultsFile("exp_traffic_20191122-202041.txt")
 #elapsed time wrong
-backdoor_aggregation <-  loadResultsFile("exp_traffic_20191221-160121.txt")
+backdoor_aggregation <- loadResultsFile("exp_traffic_20200109-2019071.txt")
 #elapsed time wrong - redo
 
 #Plot 1"
@@ -53,15 +53,16 @@ legend("bottomright",
        lty=c(1,1,2,2,3), cex=0.5)
 
 #Plot 2"
-plot(backdoor_sequential$avg_test_loss[backdoor_sequential$training_type == "normal"] ~ 
+plot(backdoor_sequential$avg_training_loss[backdoor_sequential$training_type == "normal"] ~ 
        backdoor_sequential$epoch_number[backdoor_sequential$training_type == "normal"], 
      type = "l", 
      col = "red", 
      xlab = "Epoch number", 
-     ylab = "Testset loss",
-     main = "Testset loss \nof benign testset")
+     ylab = "Trainset loss",
+     ylim = c(0,3),
+     main = "Trainset loss \nof benign testset")
 
-lines(backdoor_aggregation$avg_test_loss[backdoor_aggregation$training_type == "normal"] ~ 
+lines(backdoor_aggregation$avg_training_loss[backdoor_aggregation$training_type == "normal"] ~ 
         backdoor_aggregation$epoch_number[backdoor_aggregation$training_type == "normal"], 
       type = "l", 
       col = "blue")
@@ -72,16 +73,16 @@ legend("right",
        col=c("red", "blue"),
        lty=c(1,1), cex=0.7)
 
-plot(backdoor_aggregation$avg_test_loss[backdoor_aggregation$training_type == "backdoor"] ~ 
+plot(backdoor_aggregation$avg_training_loss[backdoor_aggregation$training_type == "backdoor"] ~ 
        backdoor_aggregation$epoch_number[backdoor_aggregation$training_type == "backdoor"], 
      type = "l", 
      col = "blue", 
      xlab = "Epoch number", 
-     ylab = "Testset loss",
-     ylim=c(-1,10),
-     main = "Testset loss \nof malicious testset")
+     ylab = "Trainset loss",
+     ylim=c(0,5),
+     main = "Trainset loss \nof malicious testset")
 
-lines(backdoor_sequential$avg_test_loss[backdoor_sequential$training_type == "backdoor"] ~ 
+lines(backdoor_sequential$avg_training_loss[backdoor_sequential$training_type == "backdoor"] ~ 
         backdoor_sequential$epoch_number[backdoor_sequential$training_type == "backdoor"], 
       type = "l",
       col = "red")

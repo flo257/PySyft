@@ -22,7 +22,9 @@ plot(clients_10$test_accuracy ~
      ylab = "Test accuracy",
      xlim = c(0, 1000),
      ylim = c(0,100),
-     main = "Benign testset performance\nat different number of clients using federated aggregation")
+     main = "STRETCHED: Benign testset performance\nat different number of clients using federated aggregation")
+
+clients_5$epoch_number = clients_5$epoch_number * 3.33
 
 lines(clients_5$test_accuracy ~ 
         clients_5$epoch_number, 
@@ -47,7 +49,7 @@ plot(clients_10$avg_training_loss ~
      ylab = "Test accuracy",
      xlim = c(0, 1000),
      ylim = c(0,8),
-     main = "Training lossat different number of clients\nusing federated averaging")
+     main = "STRETCHED: Training lossat different number of clients\nusing federated averaging")
 
 lines(clients_5$avg_training_loss ~ 
         clients_5$epoch_number, 

@@ -1,5 +1,5 @@
 loadResultsFile <- function(filename){
-  object = read.table(paste("/Users/floriannuding/PySyft-fork/examples/masterarbeit/results/", filename, sep=""),
+  object = read.table(paste("/Users/floriannuding/PySyft-fork/examples/masterarbeit/results/traffic/", filename, sep=""),
                       skip=11,
                       header = TRUE,
                       sep = ";",
@@ -11,8 +11,7 @@ loadResultsFile <- function(filename){
 }
 
 backdoor_100 <- loadResultsFile("exp_traffic_20191221-160121.txt")
-backdoor_50 <-loadResultsFile("exp_traffic_20191222-114051.txt")
-
+backdoor_75 <-loadResultsFile("exp_traffic_20200112-130710.txt")
 backdoor_50 <-loadResultsFile("exp_traffic_20191222-114051.txt")
 backdoor_25 <-loadResultsFile("exp_traffic_20191222-141343.txt")
 
@@ -23,8 +22,13 @@ plot(backdoor_100$test_accuracy[backdoor_100$training_type == "normal"] ~
      col = "red", 
      xlab = "Epoch number", 
      ylab = "Test accuracy",
-     xlim = c(0, 50),
+     xlim = c(0, 100),
      main = "Benign testset performance\nwith p% malicious data in backdoored clients")
+
+lines(backdoor_75$test_accuracy[backdoor_75$training_type == "normal"] ~ 
+        backdoor_75$epoch_number[backdoor_75$training_type == "normal"], 
+      type = "l", 
+      col = "yellow")
 
 lines(backdoor_50$test_accuracy[backdoor_50$training_type == "normal"] ~ 
         backdoor_50$epoch_number[backdoor_50$training_type == "normal"], 
@@ -40,11 +44,12 @@ abline(h=95, lty=2)
 
 legend("bottomright", 
        legend=c("malicious clients at p=100%", 
+                "malicious clients at p=75%",
                 "malicious clients at p=50%",
                 "malicious clients at p=25%",
                 "95% accuracy"),
-       col=c("red", "blue", "green","black"), 
-       lty=c(1,1,1,2), cex=0.7)
+       col=c("red", "yellow","blue", "green","black"), 
+       lty=c(1,1,1,1,2), cex=0.7)
 
 plot(backdoor_100$test_accuracy[backdoor_100$training_type == "backdoor"] ~ 
        backdoor_100$epoch_number[backdoor_100$training_type == "backdoor"], 
@@ -54,6 +59,11 @@ plot(backdoor_100$test_accuracy[backdoor_100$training_type == "backdoor"] ~
      ylab = "Test accuracy",
      xlim = c(0, 100),
      main = "Backdoored testset performance\nwith p% malicious data in backdoored clients")
+
+lines(backdoor_75$test_accuracy[backdoor_75$training_type == "backdoor"] ~ 
+        backdoor_75$epoch_number[backdoor_75$training_type == "backdoor"], 
+      type = "l", 
+      col = "yellow")
 
 lines(backdoor_50$test_accuracy[backdoor_50$training_type == "backdoor"] ~ 
         backdoor_50$epoch_number[backdoor_50$training_type == "backdoor"], 
@@ -68,12 +78,13 @@ lines(backdoor_25$test_accuracy[backdoor_25$training_type == "backdoor"] ~
 abline(h=95, lty=2)
 
 legend("bottomright", 
-       legend=c("malicious clients at p=100%", 
+       legend=c("malicious clients at p=100%",
+                "malicious clients at p=75%",
                 "malicious clients at p=50%",
                 "malicious clients at p=25%",
                 "95% accuracy"),
-       col=c("red", "blue", "green","black"), 
-       lty=c(1,1,1,2), cex=0.7)
+       col=c("red", "yellow","blue", "green","black"), 
+       lty=c(1,1,1,1,2), cex=0.7)
 
 #trainloss
 plot(backdoor_100$avg_test_loss[backdoor_100$training_type == "backdoor"] ~ 

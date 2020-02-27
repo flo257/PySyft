@@ -11,7 +11,7 @@ loadResultsFile <- function(filename){
 }
 
 backdoor_basic <- loadResultsFile("exp_traffic_20191221-160121.txt")
-backdoor_replacement <- loadResultsFile("exp_traffic_20191223-174802.txt")
+backdoor_replacement <- loadResultsFile("exp_traffic_20191220-104730.txt")
 
 "Epoch number ~ Test accuracy"
 plot(backdoor_basic$test_accuracy[backdoor_basic$training_type == "normal"] ~ 
@@ -22,7 +22,7 @@ plot(backdoor_basic$test_accuracy[backdoor_basic$training_type == "normal"] ~
      ylab = "Test accuracy",
      xlim = c(0, 100),
      ylim = c(0,100),
-     main = "Performance comparison\non basic attack and model replacement\nREPEAT EXPERIMENTS")
+     main = "Performance comparison\nof basic attack (at 100% malicious data)\nand model replacement (at 50% malicious data)")
 
 lines(backdoor_replacement$test_accuracy[backdoor_replacement$training_type == "normal"] ~ 
         backdoor_replacement$epoch_number[backdoor_replacement$training_type == "normal"], 

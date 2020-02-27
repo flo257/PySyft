@@ -60,7 +60,7 @@ plot(backdoor_100_last$avg_training_loss[backdoor_100_last$training_type == "nor
      col = "red", 
      xlab = "Epoch number", 
      ylab = "Avg. train loss",
-     main = "Average train loss\nwith 20% malicious clients")
+     main = "Average train loss\nwith 20% malicious clients LAST")
 
 lines(backdoor_100_last$avg_training_loss[backdoor_100_last$training_type == "backdoor"] ~ 
         backdoor_100_last$epoch_number[backdoor_100_last$training_type == "backdoor"], 
@@ -72,3 +72,24 @@ legend("topright",
                 "malicious data train loss"),
        col=c("red", "blue"), 
        lty=c(1,1), cex=0.8)
+
+"Epoch number ~ Test accuracy"
+plot(backdoor_100_first$avg_training_loss[backdoor_100_first$training_type == "normal"] ~ 
+       backdoor_100_first$epoch_number[backdoor_100_first$training_type == "normal"], 
+     type = "l", 
+     col = "red", 
+     xlab = "Epoch number", 
+     ylab = "Avg. train loss",
+     main = "Average train loss\nwith 20% malicious clients FIRST")
+
+lines(backdoor_100_first$avg_training_loss[backdoor_100_first$training_type == "backdoor"] ~ 
+        backdoor_100_first$epoch_number[backdoor_100_first$training_type == "backdoor"], 
+      type = "l", 
+      col = "blue")
+
+legend("topright", 
+       legend=c("benign data train loss", 
+                "malicious data train loss"),
+       col=c("red", "blue"), 
+       lty=c(1,1), cex=0.8)
+
