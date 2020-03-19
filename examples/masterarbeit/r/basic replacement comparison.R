@@ -20,7 +20,7 @@ plot(backdoor_basic$test_accuracy[backdoor_basic$training_type == "normal"] ~
      col = "red", 
      xlab = "Epoch number", 
      ylab = "Test accuracy",
-     xlim = c(0, 100),
+     xlim = c(0, 50),
      ylim = c(0,100),
      main = "Performance comparison\nof basic attack (at 100% malicious data)\nand model replacement (at 50% malicious data)")
 
@@ -43,7 +43,7 @@ lines(backdoor_replacement$test_accuracy[backdoor_replacement$training_type == "
 
 abline(h=95, lty=3)
 
-legend("bottomright", 
+legend("right", 
        legend=c("basic attack (benign testset)", 
                 "model replacement (benign testset)",
                 "basic attack (malicious testset)", 

@@ -9,7 +9,7 @@
 #order of time backdoors being inserted: backdoors first
 #attack model: basic
 #starttime: 160728
-training_type;epoch_number;learn_rate;avg_training_loss;avg_test_loss;test_accuracy;timestamp
+1;2;3;4;5;6;7;8;9;10
 backdoor;1;0.0001;3.634876012802124;in_between;3.4605525000927853;100.0;3.516494560090682;100.0;160744
 normal;1;0.0001;in_between;3.769903433974169;0.4750593824228028;3.749892234802246;3.726697038301663;0.4750593824228028;161143
 backdoor;2;0.0001;3.1677026748657227;in_between;1.9307627287537732;100.0;3.651082946342414;0.0;161323
