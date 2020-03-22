@@ -16,10 +16,11 @@ last_80_20 <- loadResultsFile("exp_gtsrb_perClassAccuracy_20200312-163037.txt")
 first_50_50 <- loadResultsFile("exp_gtsrb_perClassAccuracy_20200312-095036.txt")
 last_50_50 <- loadResultsFile("exp_gtsrb_perClassAccuracy_20200312-162036.txt")
 
-original <- loadResultsFile("exp_gtsrb_perClassAccuracy_20200224-112615.txt")
+original <- loadResultsFile("exp_gtsrb_perClassAccuracy_20200225-152647.txt")
 
-first_20clients_80_20 <- loadResultsFile("exp_gtsrb_perClassAccuracy_20200312-235421.txt")
-first_20clients_50_50 <- loadResultsFile("exp_gtsrb_perClassAccuracy_20200312-235504.txt")
+first_20clients_80_20 <- loadResultsFile("exp_gtsrb_perClassAccuracy_20200318-110957.txt")
+first_20clients_50_50 <- loadResultsFile("exp_gtsrb_perClassAccuracy_20200318-112229.txt")
+
 
 #80_20 first
 colors = array(1:43)
@@ -41,13 +42,13 @@ matplot(1:100,
         ylab = "Test accuracy",
         ylim = c(0,100),
         col = colors,
-        main = "20 CLIENTS: 80_20 first"
+        main = "5 CLIENTS: 80_20 aggregation"
 )
-legend("bottomright", 
-       legend=c("classes known to 10% of the clients", 
+legend("left", 
+       legend=c("classes known to 20% of the clients", 
                 "classes known to all clients"),
        col=c("red", "grey"), 
-       lty=c(1,1), cex=0.7)
+       lty=c(1,1), cex=0.5)
 
 #original
 matplot(1:100, 
@@ -58,7 +59,7 @@ matplot(1:100,
         ylab = "Test accuracy",
         ylim = c(0,100),
         col = colors,
-        main = "80_20 first split on original data"
+        main = "80_20 first split on original data - aggregation"
 )
 legend("bottomright", 
        legend=c("20% of the classes used in distribution experiments", 
@@ -93,16 +94,16 @@ for (i in 1:43) {
 }
 
 matplot(1:100, 
-        y= 100*first_50_50[1:100,], 
+        y= 100*first_20clients_50_50[1:100,], 
         type = "l", 
         lty = 1,
         xlab = "Epoch number", 
         ylab = "Test accuracy",
         ylim = c(0,100),
         col = colors,
-        main = "50_50 first"
+        main = "50_50 aggregation"
 )
-legend("bottomright", 
+legend("left", 
        legend=c("classes known to 20% of the clients", 
                 "classes known to all clients"),
        col=c("red", "grey"), 

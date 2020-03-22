@@ -19,9 +19,9 @@ loadResultsFile2 <- function(filename){
   return(object)
 }
 
-backdoor_20percent <-  loadResultsFile("exp_gtsrb_20200229-071144.txt")
-backdoor_10percent <- loadResultsFile("exp_gtsrb_20200305-234618.txt")
-backdoor_5percent <- loadResultsFile("exp_gtsrb_20200310-152626.txt")
+backdoor_20percent <-  loadResultsFile("exp_gtsrb_20200228-152630.txt")
+backdoor_10percent <- loadResultsFile("exp_gtsrb_20200308-160728.txt")
+backdoor_5percent <- loadResultsFile("exp_gtsrb_20200308-161012.txt")
 backdoor_0 <- loadResultsFile2("exp_gtsrb_20200224-112615.txt")
 
 "Epoch number ~ Test accuracy"
@@ -66,7 +66,7 @@ plot(backdoor_20percent$X9[backdoor_20percent$X1 == "backdoor"] ~
      col = "red", 
      xlab = "Epoch number", 
      ylab = "Test accuracy",
-     ylim = c(90,100),
+     ylim = c(0,100),
      main = "Malicious testset performance\nwith p% malicious clients\nsequential merging")
 
 lines(backdoor_10percent$X9[backdoor_10percent$X1 == "backdoor"] ~ 
